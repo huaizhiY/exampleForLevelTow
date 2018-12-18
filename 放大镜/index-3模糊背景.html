@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#small{
+			width: 400px;
+			height: 400px;
+			position: relative;
+			box-shadow: 0 0 5px #000;
+			float: left;
+			margin-left: 300px;
+		}
+		#small img{
+			width: 400px;
+			height: 400px;
+		}	
+		#frame{
+			width: 100px;
+			height: 100px;
+			box-shadow: 0 0 5px #000;
+			border-radius: 5px;
+			position: absolute;
+			left: 0;
+			top: 0;
+			z-index: 1;	
+			display: none;
+			background-image: url(images/timg.jpg);
+			background-size: 400px 400px;
+			background-repeat: no-repeat;
+		}
+		#film{
+			width: 400px;
+			height: 400px;
+			position: absolute;
+			left: 0;
+			top: 0;
+			z-index:999;
+			cursor: none;
+		}
+		#big{
+			width: 400px;
+			height: 400px;
+			overflow: hidden;
+			box-shadow: 0 0 5px #000;
+			margin-left: 100px;
+			float: left;
+			position: relative;
+			display: none;
+		}
+		#big img{
+			width: 1600px;
+			height: 1600px; 
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="small">
+		<!--贴的膜-->
+		<div id="film"></div>	
+		<div id="frame">
+			<!-- 一个框 -->
+		</div>
+		<img src="images/timg.jpg" alt="">
+	</div>
+	<div id="big">
+		<img src="images/timg.jpg" alt="">
+	</div>
+
+</body>
+<script>
+	var oSmall = document.getElementById("small");
+	var oSmallImg = oSmall.children[2];
+	// 小框;
+	var oFrame = document.getElementById("frame");
+	var oBig = document.getElementById("big");
+	var oBigImg = oBig.children[0];
+
+	oSmall.onmouseenter = function(){
+		// 小框和大图都显示出来;
+		oBig.style.display = "block";
+		oFrame.style.display = "block";
+		oSmallImg.style.opacity = 0.3;
+	}
+	oSmall.onmouseleave = function(){
+		// 小框和大图都隐藏;
+		oBig.style.display = "none";
+		oFrame.style.display = "none";
+		oSmallImg.style.opacity = 1;
+	}
+	oSmall.onmousemove = function(event){
+		// 1. 获取定位的x,y 值;
+		var e = event || window.event;
+		var offsetX = e.offsetX;
+		var offsetY = e.offsetY;
+		// 2. 给元素设置的left 值 和top值;
+		var nLeft = offsetX  - 50;
+		var nTop = offsetY - 50;
+		// 边界检测;  最小值 ; 最大值;
+		
+		// 最小值;
+		nLeft = nLeft < 0 ? 0 : nLeft;
+		nTop = nTop < 0 ? 0 : nTop;
+
+		// 最大值;
+		var maxLeft = oSmall.offsetWidth - oFrame.offsetWidth;
+		var maxTop = oSmall.offsetHeight - oFrame.offsetHeight;
+		
+		nLeft = nLeft > maxLeft ? maxLeft : nLeft;
+		nTop = nTop > maxTop ? maxTop : nTop;
+
+		oFrame.style.left = nLeft +"px";
+		oFrame.style.top = nTop +  "px";
+
+		// 边界检测;
+		
+		// 比例 已知 是4;
+		// 比例分成两部分;
+		var propX = oBig.offsetWidth / oFrame.offsetWidth;
+		var propY = oBig.offsetHeight / oFrame.offsetHeight;
+
+		// console.log(propX,propY);
+		
+		oBigImg.style.left = -nLeft * propX + "px";
+		oBigImg.style.top = -nTop * propY + "px";
+
+		oFrame.style.backgroundPosition = `${-nLeft}px ${-nTop}px`
+	}	
+
+</script>
+</html>

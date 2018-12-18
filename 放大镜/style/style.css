@@ -1,0 +1,53 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+.small {
+	width: 400px;
+	height: 400px;
+	position: relative;
+	margin-left: 200px;
+	margin-top: 100px;
+	border:4px solid #ddd;
+	box-shadow: 0 0 5px rgba(0,0,0,.5);
+}
+.small img{
+	width: 100%;
+	height: 100%;
+}
+.small .wrap{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: 999;
+}
+
+.small .grayBox{
+	display: none;
+	width: 100px;
+	height: 100px;
+	background-image: url(../images/timg.jpg);
+	background-size:400px 400px;
+	background-position: 0 0;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	position: absolute;
+	left: 0;
+	top: 0;
+}	
+
+.big{
+	width: 400px;
+	height: 400px;
+	position: absolute;
+	left: 700px;
+	top: 100px;
+	border:1px solid #f10;
+	overflow: hidden;
+	display: none;
+}
+.big img{
+	position: absolute;
+
+}
+
