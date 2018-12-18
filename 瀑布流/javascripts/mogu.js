@@ -1,5 +1,3 @@
-// console.log(_);
-
 /** 
  * 
  * 1. 渲染页面;
@@ -77,7 +75,6 @@ function eleSort(eles){
       eles = _slice(eles);
       eles.forEach(function(ele,index){
 
-            // console.log(ele);
             // 下标截止到3 是第一排。
             // 其余的就是第二排。
             if(index <= 3){
@@ -117,23 +114,17 @@ function eleSort(eles){
 // 判定可加载;
 
 onscroll = function(){
-      // console.log("页面卷动");
-      // isLoad()
-      // console.log(isLoad());
 
       // 如果需要加载, 发起ajax请求;
       if( !isLoad() || GLOBAL.loading_flag ) return false;
       // 开始加载数据;
       GLOBAL.loading_flag  = true;
-      // setTimeout( function (){
-      //       // console.log("这是一个ajax请求 , 请求成功时的回调函数");
-      //       GLOBAL.loading_flag  = false;
-      // } , 1000 )
+    
       _jsonp("https://list.mogujie.com/search")
       .then(function(res){
             GLOBAL.loading_flag  = false;
             var goodsJSON = res.result.wall.list;
-            randomPage(goodsJSON);
+            renderPage(goodsJSON);
             eleSort(container.children);
       })
 }
@@ -145,7 +136,6 @@ function isLoad(){
 
       var st = document.body.scrollTop || document.documentElement.scrollTop;
       var mh = Math.min.apply(false, GLOBAL.heightArray )
-      // console.log(ch,st, mh);
 
       if(GLOBAL.ch + st >= mh - 800 ) {
             return true;
