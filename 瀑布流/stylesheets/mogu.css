@@ -1,0 +1,58 @@
+/* common --start*/
+
+.line{
+      width: 100%;
+      height: 1px;
+      background: #000;
+      box-shadow:  0 1px 0  #000;
+      opacity: 0.3;
+      border-radius: 1px;
+}
+
+/* common --end */
+
+
+.container-goodslist{
+      width: 1260px;
+      margin: 0 auto;
+      position: relative;
+}
+.container-goodslist::after{
+      content: "";
+      display: block;
+      clear: both;
+}
+
+.container-goodslist .goods-box{
+      width: 282px;
+      box-shadow: 0 0 5px #eee;
+      transition: 2s;
+      box-sizing: border-box;
+      padding: 10px;
+      border-radius: 5px;
+      float: left;
+      margin-left: 20px;
+      margin-top: 20px;
+}
+.container-goodslist .goods-box:hover{
+      box-shadow: 0 5px 15px #ddd;
+}
+ 
+.container-goodslist .good-image img{
+      width: 100%;
+      border-radius: 10px 10px 0 0 ;
+}
+
+.container-goodslist .good-title{
+      font-size: 14px;
+      line-height: 28px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      padding-left: 40px;
+      padding-right: 40px;
+}
+.container-goodslist .good-detail {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 5px;
+}
