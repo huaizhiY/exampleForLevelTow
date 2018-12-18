@@ -1,0 +1,48 @@
+*{
+      margin: 0;
+      padding: 0;
+}
+
+body{
+      background: #ddd;
+}
+
+.container h3{
+      text-align: center;
+      line-height: 80px;
+      font-size: 50px;
+}
+.container{
+      width: 80%;
+      margin: 40px auto;
+      background: #fff;
+}
+
+.container .box{
+      width: 20%;
+      height: 300px;
+      background:rgba(0,0,0,.5);
+      box-sizing: border-box;
+      border: 10px solid #fff;
+      float: left;
+      margin-top: 20px;
+}
+
+.operation{
+      padding: 20px;
+      display: flex;
+      justify-content: space-around;
+      position: fixed;
+      left: 5%;
+      bottom: 5%;
+      z-index: 1;
+      background: rgba(255,255,255,.8)
+}
+.operation p{
+      padding:0 5px;
+}
+.operation input{
+      text-align: center;
+      padding: 5px;
+      font-size: 20px;
+}
