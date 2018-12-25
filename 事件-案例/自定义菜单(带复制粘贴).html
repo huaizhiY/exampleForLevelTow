@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>自定义菜单</title>
+	<link rel="stylesheet" href="css/menu.css">
+</head>
+<body>
+	<div class="wrap">
+		<div class="box1">
+			<p>hello world1</p>
+			<p>hello world2</p>
+			<p>hello world3</p>
+		</div>
+
+		<div class="box2">
+			<p>hello world1</p>
+			<p>hello world2</p>
+			<p>hello world3</p>
+		</div>
+	</div>
+	<div class="menu">
+		<ul>
+			<li id="copy">复制</li>
+			<li id="paste">粘贴</li>
+			<li id="cut">剪切</li>
+			<li id="remove">删除</li>
+		</ul>
+	</div>
+	<script>
+		// 1. 在对应的元素上点击时获取对应的事件;
+
+		var menu = _(".menu");
+		var copy = _("#copy");
+		var paste = _("#paste");
+		var cut = _("#cut");
+		var remove = _("#remove");
+
+		// 全局记录当前操作的目标点(target)方便所有事件处理函数使用;
+
+		// target 是右键选中的元素;
+		var target = null;
+		// 赋值的元素;
+		// 赋值或者剪切时用来临时存储dom对象的变量;
+		var copy_ele = null;
+
+		// 1. 显示菜单;
+		document.oncontextmenu = function(evt){
+			var e = evt || window.event;
+			// 显示菜单;
+			menu.style.display = "flex";
+			// 让menu和鼠标指针一个定位;
+			menu.style.left = e.clientX + "px";
+			menu.style.top = e.clientY + "px";
+		
+			// 3. 获取当前操作的目标点;
+			// 上一个目标点;
+			if(target !== null){
+				target.style.opacity = 1;
+			}
+			// 获取元素目标点;
+			target = e.target || e.srcElement;
+			// console.log(target);
+			// 当前目标点进行操作;
+			target.style.opacity = 0.3;
+
+			// 阻止默认事件;
+			if(e.preventDefault){	
+				e.preventDefault();
+			}else{
+				e.returnValue = false;
+			}
+		}
+
+		// 2. 隐藏菜单;
+		// 获取当前事件起始目标点; => target; 
+		document.onclick = function(evt){
+			var e = evt || window.event;
+			// 目标点的获取
+			// var target = e.target || e.srcElement;
+			// console.log(target);
+			// 隐藏菜单;
+			menu.style.display = "none";
+			target.style.opacity = 1;
+		}
+
+		// 4. 创建复制粘贴剪切删除功能;
+		// 复制 : 
+		// 创建一个和目标一模一样的元素 放入  copy_ele  变量之中; 
+		copy.onclick = function(){
+			// 存储要复制的元素;
+			copy_ele = target.cloneNode(true);
+			copy_ele.style.opacity = 1;
+			// console.log("当前要操作的元素是",copy_ele);
+		}
+		// 粘贴;
+		paste.onclick = function(){
+			target.appendChild(copy_ele);
+		}
+
+		cut.onclick = function(){
+			// 存储要复制的元素;
+			copy_ele = target.cloneNode(true);
+			copy_ele.style.opacity = 1;
+			target.remove();
+		}
+
+		remove.onclick = function(){
+			target.remove();
+		}
+
+		// 选择器;
+		function _(select){
+			// 如果选择的数组只有一项,直接返回这个项而不是数组;
+			var doms = document.querySelectorAll(select);
+			if(doms.length === 0){
+				return null;
+			}
+			return doms.length === 1 ? doms[0] : doms;
+		}
+
+
+	</script>
+</body>
+</html>

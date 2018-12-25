@@ -1,0 +1,113 @@
+
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>JavaScript简易日历</title>
+<style type="text/css">
+* { padding: 0; margin: 0; }
+li { list-style: none; }
+body { background: #f6f9fc; font-family: arial; }
+
+.calendar { width: 210px; margin: 0 auto; padding: 10px 10px 20px 20px; background: #eae9e9; }
+.calendar ul { width: 210px; overflow: hidden; padding-bottom: 10px; }
+.calendar li { float: left; width: 58px; height: 54px; margin: 10px 10px 0 0; border: 1px solid #fff; background: #424242; color: #fff; text-align: center; cursor: pointer; }
+.calendar li h2 { font-size: 20px; padding-top: 5px; }
+.calendar li p { font-size: 14px; }
+
+.calendar .active { border: 1px solid #424242; background: #fff; color: #e84a7e; }
+.calendar .active p { font-weight: bold; }
+
+.calendar .text { width: 178px; padding: 0 10px 10px; border: 1px solid #fff; padding-top: 10px; background: #f1f1f1; color: #555; }
+.calendar .text h2 {font-size: 14px; margin-bottom: 10px; }
+.calendar .text p { font-size: 12px; line-height: 18px; }
+
+</style>
+
+</head>
+
+<body>
+
+<div id="tab" class="calendar">
+
+    <ul id="box">
+        <li data-index="0"  class="active"><h2>1</h2><p>JAN</p></li>
+        <li data-index="1"  ><h2>2</h2><p>FER</p></li>
+        <li data-index="2"  ><h2>3</h2><p>MAR</p></li>
+        <li data-index="3"  ><h2>4</h2><p>APR</p></li>
+        <li data-index="4"  ><h2>5</h2><p>MAY</p></li>
+        <li data-index="5" ><h2>6</h2><p>JUN</p></li>
+        <li data-index="6" ><h2>7</h2><p>JUL</p></li>
+        <li data-index="7" ><h2>8</h2><p>AUG</p></li>
+        <li data-index="8" ><h2>9</h2><p>SEP</p></li>
+        <li data-index="9" ><h2>10</h2><p>OCT</p></li>
+        <li data-index="10" ><h2>11</h2><p>NOV</p></li>
+        <li data-index="11" ><h2>12</h2><p>DEC</p></li>
+    </ul>
+    
+    <div class="text" id="txt">
+        <h2>1月活动</h2>
+        <p>快过年了，大家可以商量着去哪玩吧～</p>
+    </div>
+
+</div>
+<script type="text/javascript">
+      // 1. 给当前被点击的元素添加一个类名;
+      var oBox = document.getElementById("box");
+      var aLi = oBox.children;
+      var oTxt = document.getElementById("txt");
+      var h2 = oTxt.children[0];
+      var p = oTxt.children[1];
+      console.log(aLi);
+      var items = [
+            "哈哈哈哈好开心啊，我要学习，学习让我快乐1",
+            "哈哈哈哈好开心啊，我要学习，学习让我快乐2",
+            "哈哈哈哈好开心啊，我要学习，学习让我快乐3",
+            "哈哈哈哈好开心啊，我要学习，学习让我快乐4",
+            "哈哈哈哈好开心啊，我要学习，学习让我快乐5",
+            "哈哈哈哈好开心啊，我要学习，学习让我快乐6",
+            "哈哈哈哈好开心啊，我要学习，学习让我快乐7",
+            "哈哈哈哈好开心啊，我要学习，学习让我快乐8",
+            "哈哈哈哈好开心啊，我要学习，学习让我快乐9",
+            "哈哈哈哈好开心啊，我要学习，学习让我快乐10",
+            "哈哈哈哈好开心啊，我要学习，学习让我快乐11",
+            "哈哈哈哈好开心啊，我要学习，学习让我快乐12",
+      ]
+
+      // 给所有的li元素添加上事件;
+      for(var i = 0 ; i < aLi.length ; i ++){
+            console.log("for循环执行");
+            aLi[i].onclick = function(){
+                  // 1.清空所有li的className
+                  for(var k = 0 ; k < aLi.length ;  k ++){
+                        aLi[k].className = "";
+                  }
+                  // 2. 给当前的li添加 className;
+
+                  // 什么是当前li ???
+                  // console.log(i); 一定是 12 ;
+
+                  // this 是事件中代表当前发生事件的dom对象;
+                  this.className = "active";
+
+                  var index = this.getAttribute("data-index");
+
+                  // 获取到当前元素之中存储好的数据 (下标);
+                  // 1.根据下标拼接字符串 => 用作标题;
+                  // 2.根据下标在数组里面取出字符串 => 用于计划;
+
+                  h2.innerHTML = Number(index) + 1 + "月份";
+                  p.innerHTML  = items[index];
+            }
+      }
+
+      console.log("for循环执行完毕");
+
+      // 代码的执行顺序 ;
+      // 1. for 循环执行 完毕;
+      // 2. 事件处理函数里面的代码;
+      // 3. i是全局变量; i 只有一个;
+
+</script>
+</body>
+</html>

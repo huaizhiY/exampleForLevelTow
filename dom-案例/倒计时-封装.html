@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>倒计时</title>
+</head>
+<body>
+
+      <h2>
+            距离元旦还剩下
+            <span id="hour_ele">0</span> 
+            时
+            <span id="minute_ele">0</span>
+            分
+            <span id="second_ele">0</span>
+            秒
+            <span id="ms_ele">0</span>
+            毫秒
+      </h2>
+
+      <h2>
+            距离新年还剩下
+            <span id="hour_ele_newyear">0</span> 
+            时
+            <span id="minute_ele_newyear">0</span>
+            分
+            <span id="second_ele_newyear">0</span>
+            秒
+      </h2>
+      <!-- part8AM_clothes_10001 -->
+      <h2>
+            距离元宵节还剩下
+            <span id="hour_ele_yuanxiao">0</span> 
+            时
+            <span id="minute_ele_yuanxiao">0</span>
+            分
+            <span id="second_ele_yuanxiao">0</span>
+            秒
+      </h2>
+
+      <script src="common.js"></script>
+      <script>
+            // 计时器1 => 元旦的时间;
+            // 计时器2 => 新年的时间;
+            // 计时器3 => 元宵的时间;
+
+            setInterval(myCountDown,50)
+            function myCountDown(){
+                  var yuandan = countDown("2018/12/30");
+                  // console.log(yuandan);
+                  hour_ele.innerHTML = yuandan.hour;
+                  minute_ele.innerHTML = yuandan.minute;
+                  second_ele.innerHTML = yuandan.second;
+                  ms_ele.innerHTML = yuandan.ms;
+
+                  var newyear = countDown("2019/2/4");
+                  hour_ele_newyear.innerHTML = newyear.hour;
+                  minute_ele_newyear.innerHTML = newyear.minute;
+                  second_ele_newyear.innerHTML = newyear.second;
+            }
+
+
+      </script>
+</body>
+</html>

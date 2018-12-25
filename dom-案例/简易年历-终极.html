@@ -1,0 +1,108 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//h2D XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/h2D/xhtml1-transitional.h2d">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>JavaScript简易日历</title>
+<style type="text/css">
+* { padding: 0; margin: 0; }
+li { list-style: none; }
+body { background: #f6f9fc; font-family: arial; }
+
+.calendar { width: 210px; margin: 0 auto; padding: 10px 10px 20px 20px; background: #eae9e9; }
+.calendar ul { width: 210px; overflow: hidden; padding-bottom: 10px; }
+.calendar li { float: left; width: 58px; height: 54px; margin: 10px 10px 0 0; border: 1px solid #fff; background: #424242; color: #fff; text-align: center; cursor: pointer; }
+.calendar li h2 { font-size: 20px; padding-top: 5px; }
+.calendar li p { font-size: 14px; }
+
+.calendar .active { border: 1px solid #424242; background: #fff; color: #e84a7e; }
+.calendar .active p { font-weight: bold; }
+
+.calendar .text { width: 178px; padding: 0 10px 10px; border: 1px solid #fff; padding-top: 10px; background: #f1f1f1; color: #555; }
+.calendar .text h2 {font-size: 14px; margin-bottom: 10px; }
+.calendar .text p { font-size: 12px; line-height: 18px; }
+
+</style>
+
+</head>
+
+<body>
+
+<div id="tab" class="calendar">
+
+    <ul id="box">
+        <li class="active"><h2>1</h2><p>JAN</p></li>
+        <li><h2>2</h2><p>FER</p></li>
+        <li><h2>3</h2><p>MAR</p></li>
+        <li><h2>4</h2><p>APR</p></li>
+        <li><h2>5</h2><p>MAY</p></li>
+        <li><h2>6</h2><p>JUN</p></li>
+        <li><h2>7</h2><p>JUL</p></li>
+        <li><h2>8</h2><p>AUG</p></li>
+        <li><h2>9</h2><p>SEP</p></li>
+        <li><h2>10</h2><p>OCT</p></li>
+        <li><h2>11</h2><p>NOV</p></li>
+        <li><h2>12</h2><p>DEC</p></li>
+    </ul>
+    
+    <div class="text" id="txt">
+        <h2>1月活动</h2>
+        <p>快过年了，大家可以商量着去哪玩吧～</p>
+    </div>
+
+</div>
+<script type="text/javascript">
+
+      //---------------- 元素选择区 --------------------
+      var box = document.getElementById("box");
+      var lis = box.children;
+      var txt = document.getElementById("txt");
+      var h2 = txt.children[0];
+      var p = txt.children[1];
+      //---------------- 元素选择区 --------------------
+
+      // --------------- 数据(变量设置区)----------------
+      var items = [
+            "哈哈哈哈好开心啊，我要学习，学习让我快乐1",
+            "哈哈哈哈好开心啊，我要学习，学习让我快乐2",
+            "哈哈哈哈好开心啊，我要学习，学习让我快乐3",
+            "哈哈哈哈好开心啊，我要学习，学习让我快乐4",
+            "哈哈哈哈好开心啊，我要学习，学习让我快乐5",
+            "哈哈哈哈好开心啊，我要学习，学习让我快乐6",
+            "哈哈哈哈好开心啊，我要学习，学习让我快乐7",
+            "哈哈哈哈好开心啊，我要学习，学习让我快乐8",
+            "哈哈哈哈好开心啊，我要学习，学习让我快乐9",
+            "哈哈哈哈好开心啊，我要学习，学习让我快乐10",
+            "哈哈哈哈好开心啊，我要学习，学习让我快乐11",
+            "哈哈哈哈好开心啊，我要学习，学习让我快乐12",
+      ]
+      // --------------- 数据(变量设置区)----------------
+
+      // --------------- 事件绑定区域 --------------------
+
+      for(var i = 0 ; i < lis.length ; i ++){
+        lis[i].setAttribute("data-index",i);
+      }
+      for(var i = 0 ; i < lis.length ; i ++){
+            lis[i].onclick = function(){
+                // 1. 清空其余元素的className
+                for(var k = 0 ;  k < lis.length ; k ++){
+                    lis[k].className = "";
+                }
+                // 2. 给当前元素设置className;
+                this.className = "active";
+                // 3. 获取当前元素的 data-index 属性;
+                var index = this.getAttribute("data-index");
+
+                // 3.1 拼接字符串 => h2;
+                h2.innerHTML = Number(index) + 1 + "月活动";
+
+                // 3.2 根据下标获取具体的活动内容;
+                p.innerHTML = items[index];
+            }
+      }
+
+      // --------------- 事件绑定区域 --------------------
+</script>
+</body>
+</html>

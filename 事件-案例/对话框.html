@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div id="main" class="main">
+		<ul id="content" class="content">
+			<li class="msgContent left">hello?</li>
+			<div style="clear: both;"></div>
+			<li class="msgContent left">hello</li>
+			<div style="clear: both;"></div>
+			<li class="msgContent right">hi</li>
+			<div style="clear: both;"></div>
+			<li class="msgContent left">hehe</li>
+			<div style="clear: both;"></div>
+			<li class="msgContent left">goodbye</li>
+			<div style="clear: both;"></div>
+			<li class="msgContent right">。。。。</li>
+			<div style="clear: both;"></div>
+			<li class="msgContent right">sdfasdsadfassdfsdfsdfdsfsdfsdfsdfdfasdffasdfasfdasd fasd fasd fasdfasdfasdf</li></ul>
+		<textarea id="msg_input" class="msgInput"></textarea>
+		<button id="sendbtn" class="sendbtn">发送</button>
+
+	</div>
+	<script>
+		// 1.  当发送按钮被点击时;
+		// 2.  获取 textarea 里面的值;
+		// 3.  创建 带有类名 msgContent , right 的 li  还有 带有行内样式 clear:both div 
+		// 4.  把创建好的内容放入 ul 之中;
+		
+		var sendbtn = _("#sendbtn");
+		var msgInput =  _(".msgInput");
+		var content = _("#content");
+		
+		sendbtn.onclick = sendMsg;
+		
+		
+		function sendMsg(){
+			var msgvalue = msgInput.value;
+
+			// 函数之中的终止条件 ;  如果缺少必要条件 ，那么函数要立即终止执行;
+			if(msgvalue.length === 0){
+				return false;
+			}
+			// 创建元素;
+
+			var _div = document.createElement("div");
+			_div.style.clear = "both";
+
+			var _li = document.createElement("li");
+			_li.className = "msgContent right";
+			_li.innerHTML = msgvalue;
+
+			// console.log(_div,_li);
+			// 插入元素;
+			content.appendChild(_div);
+			content.appendChild(_li);
+
+			// 自动滚到显示区域;
+			_li.scrollIntoView();
+
+			// 聊天结束之后清空value值;
+			msgInput.value = "";
+		}
+
+		// 键盘发送功能;
+		msgInput.onkeydown = function(evt){
+			var e = evt || window.event;
+			var keyCode = e.which || e.keyCode;
+
+			// 判定是否按下了回车;
+			if(keyCode === 13){
+				sendMsg();
+				return false;
+			}
+		}
+		// return false 是阻止默认事件的简写;
+		function _(select){
+			// 如果选择的数组只有一项,直接返回这个项而不是数组;
+			var doms = document.querySelectorAll(select);
+			if(doms.length === 0){
+				return null;
+			}
+			return doms.length === 1 ? doms[0] : doms;
+		}
+
+	</script>
+</body>
+</html>

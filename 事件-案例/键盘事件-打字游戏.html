@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>键盘事件</title>
+      <style>
+            .container{
+                  display: flex;
+                  justify-content: space-around;
+            }
+      </style>
+</head>
+<body>
+      
+      <div class="container">
+            <div id="randomLetter">
+                  <h2>随机字母</h2>
+                  <p>
+                        a
+                  </p>
+            </div>
+            <div id="inputLetter">
+                  <h2>您输入的字母</h2>
+                  <p>
+                       请开始输入
+                  </p>
+            </div>
+            <div id="fenshu">
+                  <p>正确<span id="true">0</span></p>
+                  <p>错误<span id="false">0</span></p>
+                  <p>得分<span id="score">0</span></p>
+            </div>   
+      </div>
+      <script>
+            
+            var inputCode = document.getElementById("inputLetter").children[1];
+            var randomCode = document.getElementById("randomLetter").children[1];
+
+            var trueSpan = document.getElementById("true");
+            var falseSpan = document.getElementById("false");
+            var scoreSpan = document.getElementById("score");
+
+            // // 1. 输入的字母发生改变;
+
+            // var trueScore = 0;
+            // var wrongScore = 0;
+            // var score = 0;
+
+            // document.onkeydown = function(evt){
+            //       // 判定当前输入的内容;
+            //       var e = evt || window.event;
+            //       // console.log(e);
+
+            //       // 键盘吗是 ASCII 码;
+            //       // var keyCode = e.which || e.keyCode;
+            //       // console.log(keyCode);
+            //       // console.log(keyCode);
+            //       // 回车是 13 ;
+
+            //       // console.log(e.code);
+
+            //       // 如果需要 那么可以用既有条件 进行进一步加工得到自己想要的值;
+            //       // var letter = e.code.replace("Key","");
+            //       // console.log(letter);
+
+            //       // 1. 我有什么;
+            //       // 2. 我要什么;
+            //       // 3. 怎么计算得到我要的值;
+            //       // 4. 谁在改变;
+                  
+            //       // console.log(e.key);
+            //       inputCode.innerHTML = e.key;
+            //       // 如果当前输入的字母 e.key 和 随机字母元素之中的值相同;
+            //       if(e.key === randomCode.innerText){
+            //             trueScore ++;
+            //       }else{
+            //             wrongScore ++;
+            //       }
+            //       randomCode.innerHTML = randomLetter();
+            //       // 改变计分板;
+
+            //       trueSpan.innerHTML = trueScore ;
+            //       falseSpan.innerHTML = wrongScore;
+            //       scoreSpan.innerHTML = trueScore - wrongScore;
+
+            //       // 倒计时 
+            //       // 计算时间内 平均打字速度 正确率;
+            //       // 根据分数给一定的意见;
+            // }
+
+
+            // function randomLetter(){
+            //       var string = "abcdefghijklmnopqrstuvwxyz";
+            //       return string[randomInt(0,string.length - 1)]
+            // }
+
+            // function randomInt(min , max){
+            //       return min + Math.round( Math.random() * (max - min));
+            // }
+
+
+            // 1. 键盘事件;
+
+            document.onkeypress = function(evt){
+                  var e = evt || window.event;
+                  // 获取键盘的ASCII;
+
+                  // 兼容 => 想要获取keyCode 的时候我们就可以用的这个方法;
+                  // var keyCode = e.which || e.keyCode;
+                  // console.log(e);   
+                  // console.log(keyCode);
+                  // console.log(String.fromCharCode(keyCode));
+
+                  // var code = e.code;
+                  // // 获取的信息非常全面;
+                  // code = code.replace("Key","").toLowerCase();
+
+                  var key = e.key;
+                  // console.log(key)
+                  inputCode.innerHTML = key;
+
+                  // 比对;
+                  // console.log(key , randomCode.innerText);
+
+                  if(key == randomCode.innerText){
+                        trueSpan.innerHTML = Number(trueSpan.innerHTML) +  1;
+                        inputCode.style.color = "yellowgreen";
+
+                  }else{
+                        falseSpan.innerHTML = Number(falseSpan.innerHTML) + 1;
+                        inputCode.style.color = "#f10";
+                  }
+
+                  scoreSpan.innerHTML = Number(trueSpan.innerHTML) - Number(falseSpan.innerHTML);
+
+
+                  // 随机字母;
+                  randomCode.innerHTML = randomLetter();
+                  
+            }
+            function randomLetter(){
+                  var string = "abcdefghijklmnopqrstuvwxyz";
+                  
+                  return string[randomInt(0,string.length - 1)]
+            }
+
+            function randomInt(min , max){
+                  return min + Math.round(Math.random() * (max - min));
+            }
+
+
+
+
+
+      </script>
+</body>
+</html>

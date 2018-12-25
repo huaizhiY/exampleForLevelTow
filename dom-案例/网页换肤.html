@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>网页换肤-黄钻</title>
+    <link id="link" rel="stylesheet" href="./css/style1.css">
+</head>
+<body>
+
+    <div id="btn-box">
+            <button data-href="style1">皮肤1</button>
+            <button data-href="style2">皮肤2</button>
+            <button data-href="style3">皮肤3</button>
+    </div>
+    <script>
+        var btnBox = document.getElementById("btn-box");
+        var btns = btnBox.children;
+        var link = document.getElementById("link");
+
+        for(var i = 0 ; i < btns.length ; i ++){
+            btns[i].onclick = function(){
+                var href = this.getAttribute("data-href");
+                // link.setAttribute("href","./css/"+href+".css");
+
+                // dom 操作存在很多的简写;
+
+                link.href = "./css/"+href+".css";
+
+                // 属性的简写，这些属性可以不用setAttribute 去实现;
+
+                // id ; 
+                // className ; 
+                // src;
+                // title 
+
+                document.title = href;
+            }
+        }
+
+    </script>
+</body>
+</html>
