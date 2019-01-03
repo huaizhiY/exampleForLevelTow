@@ -1,0 +1,70 @@
+/** * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/) * http://cssreset.com */html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,a, abbr, acronym, address, big, cite, code,del, dfn, em, img, ins, kbd, q, s, samp,small, strike, strong, sub, sup, tt, var,b, u, i, center,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td,article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary,time, mark, audio, video {    margin: 0;    padding: 0;    border: 0;    font-size: 100%;    font: inherit;    vertical-align: baseline;}/* HTML5 display-role reset for older browsers */article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {    display: block;}body {    line-height: 1;}ol, ul {    list-style: none;}blockquote, q {    quotes: none;}blockquote:before, blockquote:after,q:before, q:after {    content: '';    content: none;}table {    border-collapse: collapse;    border-spacing: 0;}
+
+.container-magnifier{
+      width: 452px;
+      margin: 40px;
+      position: relative;
+}
+
+.wrap-small-magnifier{
+      width: 450px;
+      height: 450px;
+      border: 1px solid #ddd;
+}
+.wrap-small-magnifier .patch{
+      width: 100%;
+      height: 450px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 999;
+}
+.wrap-small-magnifier .focus{
+      width: 300px;
+      height: 300px;
+      background:  #FEDE4F;
+      opacity: 0.5;
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: none;
+
+}
+
+.wrap-small-magnifier img{
+      width: 100%;
+      height: 100%;
+}
+
+.wrap-choice-magnifier {
+      padding-top: 15px;
+}
+.wrap-choice-magnifier i{
+      display: inline-block;
+      margin-left: 10px;
+      border: 2px solid #fff;
+      padding: 5px;
+}
+.wrap-choice-magnifier i.active{
+      border: 2px solid #f10;
+}
+.wrap-choice-magnifier i:hover{
+      border: 2px solid #f10;
+}
+.wrap-big-magnifier{
+      box-sizing: border-box;
+      width: 500px;
+      height: 500px;
+      position: absolute;
+      right: -510px;
+      top: 0;
+      overflow: hidden;
+      border: 1px solid #ddd;
+      display: none;
+}
+
+.wrap-big-magnifier img{
+      position: absolute;
+      left: 0;
+      top: 0;
+}
