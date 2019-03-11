@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+</head>
+<body>
+      
+      <a href="#test1">1</a>
+      <a href="#test2">2</a>
+
+      <div id="content"></div>
+
+      <script src="./libs/router.js"></script>
+      <script>
+            //路由表;
+            let routerList = [
+                  {
+                        path : "test1",
+                        url : "./page/test1.html",
+                        callback : renderContent
+                  },
+                  {
+                        path : "test2",
+                        url : "./page/test2.html",
+                        callback :renderContent
+                  }
+            ]
+            //渲染content;
+            function renderContent(res){
+                  let content = document.getElementById("content");
+                  content.innerHTML = res;
+            }
+            //路由方法;
+            new Router(routerList)
+
+      </script>
+
+</body>
+</html>
