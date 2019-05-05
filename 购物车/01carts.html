@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+      <link rel="stylesheet" href="./stylesheets/carts.css">
+      <style>
+            
+      </style> 
+</head>
+<body>
+      <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                  <div class="navbar-header">
+                              GP10
+                  </div>
+            </div>
+      </nav>
+ 
+      <div class="container">
+            <div class="row">
+                  <div class="col-md-12 shop-list">
+                        <!-- <button class="btn btn-lg btn-primary">巴啦啦小魔仙</button> -->
+                  </div>
+            </div>
+      </div>
+
+      
+      <div class="container mt10">
+            <div class="jumbotron">
+                  <ul class="goods-list">
+                        <!-- <li class="goods-box">
+                              <div class="logo">
+                                    <img src="http://t00img.yangkeduo.com/goods/images/2018-12-06/9a9ec3265e915b675f21305aec99964c.jpeg" alt="">
+                              </div>
+                              <div class="price">998￥</div>
+                              <div class="options">
+                                    <span class="glyphicon glyphicon-minus btn btn-danger"></span>
+                                    <span class="count">0</span>
+                                    <span class="glyphicon glyphicon-plus btn btn-default"></span>
+                              </div>
+                        </li> -->
+                  </ul>
+            </div>
+      </div>
+
+
+      <div class="carts">
+            <!-- 购物车图标 -->
+            <div class="carts-img">
+                  <span class="glyphicon glyphicon-shopping-cart carts-icon"></span>
+                  <span class="count">0</span>
+            </div>
+            <!-- 购物车列表 -->
+            <ul class="carts-list">
+                  <!-- <li>
+                        <div class="logo">
+                              <img src="http://t00img.yangkeduo.com/goods/images/2018-12-06/9a9ec3265e915b675f21305aec99964c.jpeg" alt="">
+                        </div>
+                        <div class="price">
+                              998
+                        </div>
+                        <div class="options">
+                              <span class="glyphicon glyphicon-minus btn btn-danger"></span>
+                              <span class="count">0</span>
+                              <span class="glyphicon glyphicon-plus btn btn-default"></span>
+                        </div>
+                  </li> -->
+            </ul>
+      </div>
+
+      <script>
+            // 购物车放在后端;   缺点很明显，太卡了，太墨迹了;
+            // 太简单;
+            // 前端购物车 ;  所有购物车的业务逻辑都放在前端, 只是在渲染之后顺便通知一下后端。  优势就是快。 不可靠。
+            // localStorage => 有同源策略; 只有当前域名下设置的 localstroage 才可以互相访问;
+      </script>
+
+      <script src="../libs/jquery-3.4.0.js"></script>
+      <script src="./scripts/carts.js"></script>
+</body>
+</html>

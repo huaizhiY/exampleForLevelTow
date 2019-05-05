@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <style>
+            div{
+                  width: 100px;
+                  height: 100px;
+                  background: #000;
+                  float: left;
+                  margin: 10px;
+            }
+      </style>
+</head>
+<body>
+      <a href="#foo">123132131</a>
+      <div></div>
+      <div lang="hhh"></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div><div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div><div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <p id="foo"></p>
+      <input type="text">
+
+      <script src="../libs/jquery-3.4.0.js"></script>
+      <script>
+            // 1.位置选择器;
+
+            // 2.过滤选择器;
+
+            // 3.可见性选择器;
+            
+            // 4. 包含选择器;
+
+            // $("div:first").css({
+            //       background : "yellowgreen"
+            // })
+
+            // $("div").first().css({
+            //       background : "yellowgreen"
+            // })
+            // $("div").last().css({
+            //       background : "yellowgreen"
+            // })
+            // $("div").eq(1).css({
+            //       background : "yellowgreen"
+            // })
+            
+
+            //条件 ;
+
+            // $("div:odd").css({
+            //       background : "yellowgreen"
+            // })
+            // $("div:even").css({
+            //       background : "#f99"
+            // })
+            // $("div:gt(1)").css({
+            //       background : "#f99"
+            // })
+            // $("div:lt(5)").css({
+            //       background : "#f99"
+            // })
+                  
+            // 绑定事件 ;
+            // var $divList = $("div");
+            // $divList.mouseenter(render);
+
+            // function render(){
+            //       // console.log(this);
+            //       // 为什么用 $() 包裹this 把原生的dom对象变成jqueryDOM 方便使用index()方法;
+            //       var index = $(this).index();
+            //       $("div:lt(" + index + ")").css({
+            //             backgroundColor : "skyblue"
+            //       })
+            //       $("div:gt(" + index + ")").css({
+            //             backgroundColor : "yellowgreen"
+            //       })
+            //       $("div:eq(" + index + ")").css({
+            //             backgroundColor : "yellow"
+            //       })
+            // }
+
+            // $("div:lang(hhh)").css({
+            //       backgroundColor : "yellow"
+            // })
+            
+            // setInterval(()=>{
+            //       console.log($("input:focus").length)
+            // },1000)
+
+            
+            // target => 过滤某个元素 的id值是否和哈希值相等(路径上的#xxx)
+            // setInterval(()=>{
+            //       console.log($("p:target").length)
+            // },1000)
+
+      </script>
+</body>
+</html>

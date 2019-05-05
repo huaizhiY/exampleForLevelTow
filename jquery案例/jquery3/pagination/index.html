@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="cn-ZH">
+
+<head>
+    <meta charset="UTF-8">
+    <title>pagination.js - 分页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../favicon.ico" rel="icon" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="./common/reset.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="./common/highlight.min.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="./common/common.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="./pagination.css" media="screen">
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="content">
+                <h1>分页-pagination.js (v1.5.1)</h1>
+                <p>需先引入jQuery，再引入pagination组件</p>
+                <pre class="bad">&lt;script&nbsp;src="jquery.js"&gt;&lt;/script&gt;</pre>
+                <pre class="bad">&lt;script&nbsp;src="jquery.pagination.js"&gt;&lt;/script&gt;</pre>
+                <p>组件样式与功能分离，自定义样式（注：这里加样式是为了示例看的清楚，操作方便。）</p>
+                <div class="update-log eg">
+                    <p class="title">更新日志</p>
+                    <ul>
+                        <li>2018-01-12 增加固定页码数量功能</li>
+                        <li>2018-01-11 修复超过1页时不会自动显示bug</li>
+                        <li>2017-09-27 优化分页逻辑</li>
+                        <li>2017-03-27 更新api参数，增加是否保持上下页按钮，为0时不显示分页</li>
+                        <li>2016-08-11 修复总数据为0时不显示分页，修复总数据为1时显示默认总页数bug，改成不显示分页。</li>
+                    </ul>
+                </div>
+                <div class="eg">
+                    <div class="m-style M-box"></div>
+                    <p class="tips">当前是第
+                        <span class="now"></span>页</p>
+                    <p>HTML</p>
+                    <pre><code class="html">&lt;div class="M-box"&gt;&lt;/div&gt;</code></pre>
+                    <p>Javascript</p>
+                    <pre><code>$('.M-box').pagination({
+    callback: function (api) {
+        $('.now').text(api.getCurrent());
+    }
+}, function (api) {
+    $('.now').text(api.getCurrent());
+}); </code></pre>
+                </div>
+                <div class="eg">
+                    <div class="m-style M-box11"></div>
+                    <p class="tips">固定页码数量，切换或者增加首页末页按钮数量都不变</p>
+                    <p>HTML</p>
+                    <pre><code class="html">&lt;div class="M-box11"&gt;&lt;/div&gt;</code></pre>
+                    <p>Javascript</p>
+                    <pre><code>$('.M-box11').pagination({
+    mode: 'fixed'
+});</code></pre>
+                </div>
+                <div class="eg">
+                    <div class="m-style M-box2"></div>
+                    <p class="tips">开启第一页和最后一页的按钮,并且内容可自定义。内容默认为1和总页数。（注：如coping为false，homePage和endPage无效。）</p>
+                    <p>HTML</p>
+                    <pre><code class="html">&lt;div class="M-box2"&gt;&lt;/div&gt;</code></pre>
+                    <p>Javascript</p>
+                    <pre><code>$('.M-box2').pagination({
+    coping: true,
+    homePage: '首页',
+    endPage: '末页',
+    prevContent: '上页',
+    nextContent: '下页'
+});</code></pre>
+                </div>
+                <div class="eg">
+                    <div class="m-style M-box1"></div>
+                    <p class="tips">
+                        总数据
+                        <span class="count">100</span>条，每页显示
+                        <span class="count">5</span>条，总页数为
+                        <span class="count">20</span>页
+                        <br>如果配置了数据总数和当前一页显示多少条数据，总页数会自动计算，这种情况下再配置总页数无效。
+                        <br>（注：数据总数totalData和每页显示的条数showData必须同时配置，否则默认使用总页数pageCount。）</p>
+                    <p>HTML</p>
+                    <pre><code class="html">&lt;div class="M-box1"&gt;&lt;/div&gt;</code></pre>
+                    <p>Javascript</p>
+                    <pre><code>$('.M-box1').pagination({
+    totalData: 100,
+    showData: 5,
+    coping: true
+});</code></pre>
+                </div>
+                <div class="eg">
+                    <div class="m-style M-box3"></div>
+                    <p class="tips">参数：jump，开启跳转到第几页，跳转按钮文本内容可修改。（如果超出最大页数会变成总页数的值）</p>
+                    <p>HTML</p>
+                    <pre><code class="html">&lt;div class="M-box3"&gt;&lt;/div&gt;</code></pre>
+                    <p>Javascript</p>
+                    <pre><code>$('.M-box3').pagination({
+    pageCount: 50,
+    jump: true,
+    coping: true,
+    homePage: '首页',
+    endPage: '末页',
+    prevContent: '上页',
+    nextContent: '下页',
+    callback: function (api) {
+        console.log(api.getCurrent())
+    }
+});</code></pre>
+                </div>
+                <div class="eg">
+                    <div class="m-style M-box4"></div>
+                    <p class="tips">ajax请求，打开控制台查看Network</p>
+                    <p>HTML</p>
+                    <pre><code class="html">&lt;div class="M-box4"&gt;&lt;/div&gt;</code></pre>
+                    <p>Javascript</p>
+                    <pre><code>$('.M-box5').pagination({
+    pageCount: 50,
+    jump: true,
+    callback: function (api) {
+        var data = {
+            page: api.getCurrent(),
+            name: 'mss',
+            say: 'oh'
+        };
+        $.getJSON('https://www.easy-mock.com/mock/58fff7a5739ac1685205ad5d/example/pagination#!method=get', data, function (json) {
+            console.log(json);
+        });
+    }
+});</code></pre>
+                </div>
+                <div class="options">
+                    <p>options(参数配置)</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>参数</td>
+                                <td>默认值</td>
+                                <td class="explain">说明</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>pageCount</td>
+                                <td>9</td>
+                                <td class="explain">总页数</td>
+                            </tr>
+                            <tr>
+                                <td>totalData</td>
+                                <td>0</td>
+                                <td class="explain">数据总条数</td>
+                            </tr>
+                            <tr>
+                                <td>current</td>
+                                <td>1</td>
+                                <td class="explain">当前第几页</td>
+                            </tr>
+                            <tr>
+                                <td>showData</td>
+                                <td>0</td>
+                                <td class="explain">每页显示的条数</td>
+                            </tr>
+                            <tr>
+                                <td>prevCls</td>
+                                <td>'prev'</td>
+                                <td class="explain">上一页class</td>
+                            </tr>
+                            <tr>
+                                <td>nextCls</td>
+                                <td>'next'</td>
+                                <td class="explain">下一页class</td>
+                            </tr>
+                            <tr>
+                                <td>prevContent</td>
+                                <td>'&lt;'</td>
+                                <td class="explain">上一页节点内容</td>
+                            </tr>
+                            <tr>
+                                <td>nextContent</td>
+                                <td>'&gt;'</td>
+                                <td class="explain">下一页节点内容</td>
+                            </tr>
+                            <tr>
+                                <td>activeCls</td>
+                                <td>'active'</td>
+                                <td class="explain">当前页选中状态class名</td>
+                            </tr>
+                            <tr>
+                                <td>mode</td>
+                                <td>'unfixed'</td>
+                                <td class="explain">模式，unfixed不固定页码按钮数量，fixed固定数量</td>
+                            </tr>
+                            <tr>
+                                <td>count</td>
+                                <td>4</td>
+                                <td class="explain">mode为unfixed时显示当前选中页前后页数，mode为fixed显示页码总数</td>
+                            </tr>
+                            <tr>
+                                <td>coping</td>
+                                <td>false</td>
+                                <td class="explain">是否开启首页和末页，值为boolean</td>
+                            </tr>
+                            <tr>
+                                <td>isHide</td>
+                                <td>false</td>
+                                <td class="explain">总页数为0或1时隐藏分页控件</td>
+                            </tr>
+                            <tr>
+                                <td>keepShowPN</td>
+                                <td>false</td>
+                                <td class="explain">是否一直显示上一页下一页</td>
+                            </tr>
+                            <tr>
+                                <td>homePage</td>
+                                <td>''</td>
+                                <td class="explain">首页节点内容，默认为空</td>
+                            </tr>
+                            <tr>
+                                <td>endPage</td>
+                                <td>''</td>
+                                <td class="explain">尾页节点内容，默认为空</td>
+                            </tr>
+                            <tr>
+                                <td>jump</td>
+                                <td>false</td>
+                                <td class="explain">是否开启跳转到指定页数，值为boolean类型</td>
+                            </tr>
+                            <tr>
+                                <td>jumpIptCls</td>
+                                <td>'jump-ipt'</td>
+                                <td class="explain">文本框内容</td>
+                            </tr>
+                            <tr>
+                                <td>jumpBtnCls</td>
+                                <td>'jump-btn'</td>
+                                <td class="explain">跳转按钮class</td>
+                            </tr>
+                            <tr>
+                                <td>jumpBtn</td>
+                                <td>'跳转'</td>
+                                <td class="explain">跳转按钮文本内容</td>
+                            </tr>
+                            <tr>
+                                <td>callback</td>
+                                <td>function(){}</td>
+                                <td class="explain">回调函数，参数"index"为当前页</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="callback">
+                    <p>api接口</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>方法</td>
+                                <td>参数</td>
+                                <td>说明</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>getPageCount()</td>
+                                <td>无</td>
+                                <td>获取总页数</td>
+                            </tr>
+                            <tr>
+                                <td>setPageCount(page)</td>
+                                <td>page：页数</td>
+                                <td>设置总页数</td>
+                            </tr>
+                            <tr>
+                                <td>getCurrent()</td>
+                                <td>无</td>
+                                <td>获取当前页</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <p>&copy;
+                <a href="http://github.com/Maxiaoxiang" target="_blank">Mss。</a>
+                <span class="spe">/</span>Powered by
+                <a href="http://maxiaoxiang.com" target="_blank">Maxiaoxiang</a>
+            </p>
+        </div>
+    </div>
+    <script src="./common/highlight.min.js"></script>
+    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script src="./jquery.pagination.js"></script>
+    <script>
+        $(function () {
+            $('pre code').each(function (i, block) {
+                hljs.highlightBlock(block);
+            });
+            $('.M-box').pagination({
+                callback: function (api) {
+                    $('.now').text(api.getCurrent());
+                }
+            }, function (api) {
+                $('.now').text(api.getCurrent());
+            });
+
+            $('.M-box11').pagination({
+                mode: 'fixed'
+            });
+            
+            $('.M-box2').pagination({
+                coping: true,
+                homePage: '首页',
+                endPage: '末页',
+                prevContent: '上页',
+                nextContent: '下页'
+            });
+
+            $('.M-box1').pagination({
+                totalData: 100,
+                showData: 5,
+                coping: true
+            });
+
+            $('.M-box3').pagination({
+                pageCount: 50,
+                jump: true,
+                coping: true,
+                homePage: '首页',
+                endPage: '末页',
+                prevContent: '上页',
+                nextContent: '下页',
+                callback: function (api) {
+                    console.log(api.getCurrent())
+                }
+            });
+
+            $('.M-box4').pagination({
+                pageCount: 50,
+                jump: true,
+                callback: function (api) {
+                    var data = {
+                        page: api.getCurrent(),
+                        name: 'mss',
+                        say: 'oh'
+                    };
+                    $.getJSON(
+                        'https://www.easy-mock.com/mock/58fff7a5739ac1685205ad5d/example/pagination#!method=get',
+                        data,
+                        function (json) {
+                            console.log(json);
+                        });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

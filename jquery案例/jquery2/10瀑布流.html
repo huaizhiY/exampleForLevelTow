@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <meta name="referrer" content="no-referrer"/>
+      <title>Document</title>
+      <link rel="stylesheet" href="./stylesheets/wf.css">
+</head>
+<body>
+      <div class="wf-list">
+            <!-- <div class="wf-box">
+                  <img class="content-img" src="https://b-ssl.duitang.com/uploads/item/201808/15/2018081585806_KKsut.thumb.400_0.jpeg" alt="">
+                  <div class="wf-detail">
+                        #Demi花花日记# 雨后的清晨空气格外的干净清爽，露珠在晨光中一闪一闪的，很漂亮…… 愿大雨也能洗去心上的尘埃，在雨后的清晨，神采奕奕地重新出发~
+                  </div>
+            </div> -->
+      </div>
+      <script src="../libs/jquery-3.4.0.js"></script>
+      <script src="./scripts/wf.js"></script>
+      <script>
+            var options = {
+                  render : function(res){
+                        // console.log(res,"hello world");
+                        let list = res.data.object_list;
+                        let html = "";
+                        list.forEach( item => {
+                              html += `<div class="wf-box">
+                                          <img class="content-img" src="${item.photo.path}" width=235 height=${item.photo.height * ( 235 / item.photo.width )}>
+                                          <div class="wf-detail">
+                                          ${item.msg}
+                                          </div>
+                                    </div> `
+                        })
+                        $(".wf-list").html(html);
+                  },
+                  url : "http://localhost/dt",
+                  data :{
+                              include_fields : "top_comments,is_root,source_link,item,buyable,root_id,status,like_count,sender,album,reply_count",
+                              filter_id:"家居生活",
+                              start: 24,
+                              _:1556094216744
+                        }
+            }
+            new WaterFull(".wf-list",options);
+      </script>
+</body>
+</html>
+

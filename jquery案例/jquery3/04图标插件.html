@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>eCharts</title>
+      <script src="../libs/echarts.min.js"></script>
+      <style>
+            body,html {
+                  height: 100%;
+            }
+      </style>
+</head>
+<body>
+     <div id="main" style="height: 100%"></div>
+
+     <script>
+           var myChart = echarts.init(document.getElementById('main'));
+
+
+           var option = {
+                 // 标题
+                  title: {
+                        text: 'GP10入门echarts 实例'
+                  },
+                  tooltip: {},
+                  legend: {
+                        data:['销量']
+                  },
+                  xAxis: {
+                        data: ["长得帅的","长得非常帅的","长得美的","长得非常美的"]
+                  },
+                  yAxis: {},
+                  series: [{
+                              name: '销量',
+                              type: 'line',
+                              data: [20,30,10,300]
+                        }]
+            };
+
+        myChart.setOption(option);
+     </script>
+</body>
+</html>

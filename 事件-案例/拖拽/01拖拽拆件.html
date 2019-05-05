@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <style>
+            #box{
+                  width: 100px;
+                  height: 100px;
+                  background: #000;
+                  position: absolute;
+            }
+      </style>
+</head>
+<body>
+      <div id="box"></div>
+      <script src="../libs/jquery-3.4.0.js"></script>
+      <script src="./scripts/drag.js"></script>
+      <script>
+      
+            var drag = new Drag("#box");
+            // 如果想要添加内部功能的话; 需要使用 drag.startCb.add 添加功能;
+            
+      </script>
+</body>
+</html>

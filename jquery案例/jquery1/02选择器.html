@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">  
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+</head>
+<body>
+<!-- 
+      <div class="box">hello world</div>
+      <div class="box">hello world</div>
+      <div class="box">hello world</div>
+      <div class="box">hello world</div>
+      <div class="box">hello world</div>
+      <div class="box">hello world</div>
+
+      <div id="box"></div>
+ -->
+
+      <ul>
+            <li>hello world1</li>
+            <li>hello world2</li>
+            <li>hello world2</li>
+            <li id="mark">hello world2</li>
+            <li>hello world2</li>
+            <li>hello world2</li>
+            <li>hello world2</li>
+            <li>hello world3</li>
+            <ol>
+                  <li>hello world</li>
+                  <li>hello world</li>
+                  <li>hello world</li>
+                  <li>hello world</li>
+            </ol>
+            <span>hello world</span>
+            <span>hello world</span>
+            <span>hello world</span>
+            <span>hello world</span>
+            <span>hello world</span>
+      </ul>
+
+      <script src="../libs/jquery-3.4.0.js"></script>
+      <script>
+            // 1 ID class tag ;
+            // 选择器的返回结果是什么 ? 伪数组 ; 
+
+            // console.log($(".box"));
+            // // jQuery DOM => 可批量操作的DOM数组;
+            // $(".box").css({
+            //       width:100,
+            //       height:100,
+            //       backgroundColor : "red"
+            // })
+
+            // jQuery => 无 new 调用 ;  => jQuery 的实例对象;
+            
+            // var box = document.getElementById("box");
+            // console.log($("#box") === $(box));
+            // console.log($("#box") === $("#box"));
+
+            // 本质上来讲还是new ;
+
+
+            // 中级选择器 : 
+            // *  统配选择器 ; 选择全部
+            // a b c 后代选择器;
+            // a,b,c 群组选择器;
+            // a>b   直接子选择器;
+
+            // $("ul li").css({
+            //       color : "yellowgreen"
+            // })
+            // $("ul>li").css({
+            //       color : "#f99"
+            // })
+            // // $("ul li , ul span").css({
+            // //       color : "#f12"
+            // // })
+            // $("ul>*").css({
+            //       color : "#f12"
+            // })
+
+            // 高级选择器 :
+
+            // ul>li  直接子选择器;
+            // ul li  后代选择器;\
+            // ul + li  ul下一个(同级)li;
+            // ul ~ li  ul下所有li;
+            
+            // $("#mark +li").css({
+            //       color : "red"
+            // })
+            // $("#mark ~*").css({
+            //       color : "red"
+            // })
+
+            // jQuery支持绝大多数的css3选择器 ; 去掉了长选择器提供了额外的 (攀关系) 结构;
+            
+            // 父子兄弟; 
+
+            // parent 
+
+            // children || find
+
+            // prev *
+
+            // next *
+
+            // siblings *
+
+            // 功能都分成三类 ; 选择一个 , 选择一群 , 过滤选择;
+            
+            // 子 : children() 直接子 ;    find() 后代; 
+
+            // 所有的选择方法 除了 find 如果不传递参数的话，默认是* ;
+            
+            // $("ul").children("span")
+            // .css({
+            //       color : "skyblue"
+            // })
+            // $("ul").children("li")
+            // .css({
+            //       color : "skyblue"
+            // })
+
+            // $("ul").find("li")
+            // .css({
+            //       color : "skyblue"
+            // }) 
+            
+            // $("#mark").parent()
+            // .css({
+            //       color : "red"
+            // })
+            // $("#mark").parents("body")
+            // .css({
+            //       color : "red"
+            // })
+
+            // $("#mark").parentsUntil("html")
+            // .css({
+            //       color : "red"
+            // })
+
+            
+
+      </script>
+</body>
+</html>

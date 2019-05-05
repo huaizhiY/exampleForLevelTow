@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			ul li {
+				list-style: none;
+			}
+			#main {
+				width: 100%;
+				height: 260px;
+				margin: 40px 5%;
+			}
+			.top {
+				width: 100%;
+			}
+			#main ul li {
+				width: 200px;
+				height: 260px;
+				float: left;
+				position: relative;
+			}
+			#main ul li div {
+				width: 100%;
+				height: 260px;
+			}
+			#main ul li div.des {
+				position: absolute;
+				left: 0;
+				top: 0;
+				background: rgba(0,0,0,.3);
+				
+				}
+				#main ul li div.des h4 {
+					color: #FFF;
+					font-size: 30px;
+					padding: 30px;
+					width: 30px;
+					margin: 0 auto;
+					
+				}
+		</style>
+
+	</head>
+
+	<body>
+
+		<div id="top">
+			<img src="img/top.png" />
+		</div>
+		<div id="main">
+			<div >
+				
+			<ul>
+				<li>
+					<div class="des"><h4>园林酒店</h4></div>
+					<div style="background: url(img/1.jpg) center;"></div>
+				</li>
+				<li>
+					<div class="des"><h4>设计师酒店</h4></div>
+					<div style="background: url(img/2.jpg) center;"></div>
+				</li>
+				<li>
+					<div class="des"><h4>青年旅社</h4></div>
+					<div style="background: url(img/3.jpg) center;"></div>
+				</li>
+				<li>
+					<div class="des"><h4>特色客栈</h4></div>
+					<div style="background: url(img/4.jpg) center;"></div>
+				</li>
+				<li>
+					<div class="des"><h4>海岛酒店</h4></div>
+					<div style="background: url(img/5.jpg) center;"></div>
+				</li>
+				<li>
+					<div class="des"><h4>海外温泉</h4></div>
+					<div style="background: url(img/6.jpg) center;"></div>
+				</li>
+			</ul>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+		<script type="text/javascript">
+			$("#main li").mouseenter(choiceEle)
+			$("#main li").mouseleave(leaveEle)
+			function choiceEle(){
+				$(this)
+				.children(".des")
+				.hide()
+				.end()
+				.stop(true)
+				.animate({
+					width:400
+				})
+				.siblings("li")
+				.stop(true)
+				.animate({
+					width:160
+				})
+			}
+			function leaveEle(){
+				$("#main li").find(".des").show()
+				.end()
+				.stop(true)
+				.animate({
+					width:200
+				})
+			}
+		</script>
+	</body>
+
+</html>

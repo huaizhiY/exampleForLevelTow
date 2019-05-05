@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+
+      <style>
+            #box{
+                  width: 100px;
+                  height: 100px;
+                  background: #000;
+                  position: absolute;
+            }
+            #wrap{
+                  height: 100px;
+                  width: 300px;
+                  position: relative;
+                  background: yellowgreen;
+            }
+            .jingubang{
+                  height: 3000px;
+            }
+            #btn{
+                  position: fixed;
+                  left: 0;
+                  top: 0;
+            }
+      </style>
+</head>
+<body>
+      
+      <!-- <p>hello world</p>
+      <p>hello world</p>
+      <p>hello world</p>
+      <p>hello world</p>
+      <p>hello world</p>
+      <p>hello world</p>
+      <p>hello world</p>
+      <p>hello world</p> -->
+      
+      <div id="wrap">
+            <div id="box"></div>
+      </div>
+
+      <div class="jingubang"></div>
+
+      <button id="btn">一个按钮</button>
+
+
+      <script src="../libs/jquery-3.4.0.js"></script>
+      <script>
+            
+            // $("p").css({
+            //       backgroundColor : function(){
+            //             // console.log(1);
+            //             return randomColor();
+            //       }
+            // })
+
+            // function randomColor(){
+            //       var r = Math.round(Math.random() * 255);
+            //       var g = Math.round(Math.random() * 255);
+            //       var b = Math.round(Math.random() * 255);
+            //       return `rgb(${r},${g},${b})`
+            // }
+      
+            // jQuery 之中的offset ; => 获取元素位置;
+            
+            // 计算元素的偏移量; => 根据浏览器边框(body);
+            // console.log($("#box").offset());
+
+            // $("#box").offset({
+            //       left : 100,
+            //       top : 100
+            // })
+
+            // 只计算定位的值，margin 等位移 不计算在内;
+            // console.log($("#box").position());
+            
+            // position 不能赋值;
+            // $("#box").position({
+            //       left : 100,
+            //       top : 100
+            // })
+
+            $("#btn").click(function(){
+                  // document.body === body
+                  // document.documentElement === html
+
+                  // var st = $("html,body").scrollTop();
+                  // console.log(st);
+
+                  // var st = $("html,body").scrollTop();
+                  // console.log(st);
+
+                  // $("html,body").scrollTop(0);
+
+                  // console.log($("#btn").width());
+                  // console.log($("#btn").width(300));
+
+                  // 包含了 padding 的宽度;
+                  // console.log($("#btn").innderWidth());
+                  // console.log($("#btn").innerWidth(300));
+
+                  // console.log($("#btn").outerWidth());
+                  // console.log($("#btn").outerWidth(300));
+            })
+
+      </script>
+</body>
+</html>

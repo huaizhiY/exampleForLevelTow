@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <style>
+            #box,#box2,#box3{
+                  width: 100px;
+                  height: 100px;
+                  background: #000;
+                  position: absolute;
+            }
+            #box2{
+                  left: 200px;
+                  background: yellowgreen;
+                  
+            }
+            #box3{
+                  left: 400px;
+                  background: #f99;
+            }
+      </style>
+</head>
+<body>
+
+      <div id="box"></div>
+      <div id="box2"></div>
+      <div id="box3"></div>
+
+      <script>
+            // DOM操作的面向对象设计;
+
+            function Drag(){
+
+            }
+            // Drag.prototype = {
+            //       constructor:Drag,
+            //       init : function(){
+
+            //       }
+            // }
+
+            Object.assign(Drag.prototype,{
+                  init(selector){
+                        this.offsetX = 0;
+                        this.offsetY = 0;
+
+                        this.ele = document.querySelector(selector);
+                        this.bindMove = null;
+                        this.bindEvent();
+                  },
+                  bindEvent(){            
+                        this.ele.addEventListener("mousedown",this.start.bind(this));
+                        this.ele.addEventListener("mouseup",this.end.bind(this));
+                  },
+                  start(evt){
+                        var e = evt || window.event;
+
+                        document.removeEventListener("mousemove",this.bindMove);
+                        document.addEventListener("mousemove",this.bindMove = this.move.bind(this));
+
+                        this.offsetX = e.offsetX;
+                        this.offsetY = e.offsetY;
+                  },
+                  move(evt){
+                        var e = evt || window.event;
+
+                        this.ele.style.left = e.clientX - this.offsetX + "px";
+                        this.ele.style.top = e.clientY - this.offsetY + "px";
+
+                  },
+                  end(){
+                        document.removeEventListener("mousemove",this.bindMove);
+                  }
+            })
+            // console.log(Drag.prototype);
+
+            // jQuery ;
+
+            var drag = new Drag();
+            drag.init("#box");
+
+            // var drag2 = new Drag();
+            // drag2.init("#box2");
+
+            // var drag3 = new Drag();
+            // drag3.init("#box3");
+
+            // 继承拖拽;
+
+            function ExtendDrag(){
+
+            }
+
+            ExtendDrag.prototype = Object.create(Drag.prototype);
+            ExtendDrag.prototype.constructor = ExtendDrag;
+            // 需要自己改进功能;
+            ExtendDrag.prototype.move = function(evt){
+                  var e = evt || window.event;
+                  var left = e.clientX - this.offsetX ;
+                  left = left <= 0 ? 0 : left;
+                  this.ele.style.left = left + "px";
+                  this.ele.style.top = e.clientY - this.offsetY + "px";
+            }
+            var extendDrag = new ExtendDrag();
+            extendDrag.init("#box2");
+
+
+            function ExtendDrag2(){
+
+            }
+
+            ExtendDrag2.prototype = Object.create(Drag.prototype);
+            ExtendDrag2.prototype.constructor = ExtendDrag2;
+
+            ExtendDrag2.prototype.move = function(evt){
+                  var e = evt || window.event;
+                  var left = e.clientX - this.offsetX ;
+                  var top = e.clientY - this.offsetY;
+                  top = top < 0 ? 0 : top;
+                  this.ele.style.left = left + "px";
+                  this.ele.style.top = top + "px";
+            }
+            var extendDrag2 = new ExtendDrag2();
+            extendDrag2.init("#box3");
+
+
+
+      </script>
+</body>
+</html>

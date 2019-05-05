@@ -1,0 +1,36 @@
+*{
+      margin: 0;
+      padding: 0;
+}
+
+.wf-list{
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+}
+.wf-box{
+      width: 235px;  
+      box-sizing: border-box;
+      border: 1px solid #e0e0e0;
+      float: left;
+      height: auto;
+      margin: 0 10px 20px;
+      border-top: 0 none;
+      background-color: #fff;
+      border-radius: 2px;
+}
+
+.wf-box .content-img{
+      width: 100%;
+}
+.wf-detail{
+    padding: 14px;
+    clear: both;
+    overflow: hidden;
+    margin: 0;
+    font-size: 14px;
+    color: #444;
+    word-wrap: break-word;
+    word-break: break-all;
+   
+}

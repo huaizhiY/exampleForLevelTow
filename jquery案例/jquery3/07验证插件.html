@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+</head>
+<body>      
+      <form action="" id="form">
+            <p>请输入用户名 : <input type="text" name="usr" required="required"></p>
+            <p>请输入邮箱号 : <input type="text" name="emali" email="true" required="required"></p>
+            <p>请输入邮箱号 : <input type="text" name="phoneNum" rangelength=[5,10] required="required"></p>
+            
+            <button>提交</button>
+      </form>
+
+      <script src="../libs/jquery-3.4.0.js"></script>
+      <script src="../libs/jquery/validate/jquery.validate.js"></script>
+      <script src="../libs/jquery/validate/jquery.validate.zh.js"></script>
+
+      <script>
+            var vali = $("#form").validate();
+            vali.settings.messages = {
+                  email : "你能输入一个争取的邮箱名么 ? "
+            }
+            console.log(vali);
+      </script>
+</body>
+</html>

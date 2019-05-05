@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+</head>
+<body>
+      <script src="../libs/jquery-3.4.0.js"></script>
+      <script>
+            // AJAX 的三层封装;
+
+            // 1. 极简应用层; 所见即所得;  $.getJSON $.getScript
+            
+            // 2. 开发用用层; 有一些隐藏细节 ; $.post() $.get() .load();
+            
+            // 3. 终极底层  ;              ; $.ajax();
+
+            // 局部 .css .click ...    全局;
+
+            // 针对某一个 jQuery DOM 操作的方法这种方法我们叫局部方法;
+            // 全局方法不为 jQuery DOM服务，而是由属于自己的功能;
+
+            // $("body").css({
+            //       backgroundColor : "red"
+            // })
+
+            // DOM => 选择器.局部方法.局部方法.局部方法;
+
+            // 全局方法;
+            // var arr = [1,2,3,4,4,5,6,7,8,8,9];
+            // $.each({a:1,b:2},function(){
+            //       console.log(1);
+            // })
+
+            // $.each 可以遍历对象;
+            // 1. 局部方法;
+            // 拆页面; 针对于老项目有这样的需求;
+
+            
+            
+      </script>
+</body>
+</html>

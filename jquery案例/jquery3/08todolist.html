@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /> 
+		<title>ToDoList</title>
+		<link rel="stylesheet" href="./stylesheets/index.css">
+	</head>
+	<body>
+		<p id="show"></p>
+		<header>
+			<section>
+                        <label for="title">ToDoList</label>
+                        <input type="text" id="title" name="title" placeholder="添加ToDo" required="required" autocomplete="off" />
+			</section>
+		</header>
+		<section>
+			<h2>正在进行 <span id="todocount">0</span></h2>
+			<ol id="todolist" class="demo-box">
+                    
+			</ol>
+			<h2>已经完成 <span id="donecount">0</span></h2>
+			<ul id="donelist">
+			</ul>
+		</section>
+	</body>
+	<script src="../libs/jquery-3.4.0.js"></script>
+      <script src="./scripts/index.js"></script>
+</html>

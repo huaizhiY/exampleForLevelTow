@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <script src="http://libs.baidu.com/jquery/1.11.3/jquery.js"></script>
+     
+        <style>
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.wrap{
+    width: 1178px;
+    height: 174px;
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+
+}
+.wrap  ul li{
+    float: left;
+    width: 210px;
+    height: 174px;
+    overflow: hidden;
+}
+.wrap  ul{
+    width: 2000px;
+}
+.wrap  ul li img{
+    width: 550px;
+    height: 174px;
+}
+        </style>
+           <script>
+$(function(){
+
+$('li').mouseover(function(){
+    $(this).stop().animate({
+        'width':'550px'
+    }).siblings().stop().animate({
+        'width':'210px'
+    })
+})
+   
+
+})
+
+        </script>
+    </head>
+    <body>
+
+    <div class="wrap">
+            <ul>
+                <li style='width:550px'><img src="http://pic.shejiben.com/hot_sjb/377_8180.jpg?1462261126" alt=""></li>
+                <li ><img src="http://pic.shejiben.com/hot_sjb/377_8288.jpg?1464830033" alt=""></li>
+                <li ><img src="http://pic.shejiben.com/hot_sjb/377_8155.jpg?1460709517" alt=""></li>
+                <li ><img src="http://pic.shejiben.com/hot_sjb/377_7937.jpg?1456984280" alt=""></li>
+            </ul>
+
+    </div>
+
+    </body>
+</html>

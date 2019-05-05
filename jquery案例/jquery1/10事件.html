@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+</head>
+<body>
+
+      <ul>
+            <li>hello world</li>
+            <li>hello world</li>
+            <li>hello world</li>
+            <li>hello world</li>
+            <li>hello world</li>
+      </ul>
+
+      <script src="../libs/jquery-3.4.0.js"></script>
+      <script>
+            // $("li").click(function(){
+            //       alert(1);
+            // })
+            // $("li").click(function(){
+            //       alert(2);
+            // })
+
+            // on off;
+
+            // $("li").on("click.a",function(){
+            //       alert(1)
+            // })
+            // $("li").on("click.b",function(){
+            //       alert(2)
+            // })
+
+            // $(document).on("click",function(){
+            //       alert("i'm document")
+            // })
+            
+            // $("li").off("click.a");
+            
+            // trigger 触发事件;
+            // $("li").eq(0).trigger("click");   // 会发生事件冒泡;
+            // $("li").eq(0).triggerHandler("click"); // 不会触发事件冒泡;
+            
+
+
+            // $("li").on("mouseenter",function(){
+            //       $(this).css({
+            //             backgroundColor : "red"
+            //       })
+            // })
+            // $("li").on("mouseleave",function(){
+            //       $(this).css({
+            //             backgroundColor : "#fff"
+            //       })
+            // })
+
+            // 复合事件 ; hover
+            // $("li").hover(function(){
+            //       $(this).css({
+            //             backgroundColor : "red"
+            //       })
+            // },function(){
+            //       $(this).css({
+            //             backgroundColor : "#fff"
+            //       })
+            // })
+
+            // $("li").on({
+            //       "mouseenter" : function(){
+            //             $(this).css({
+            //                   backgroundColor : "red"
+            //             })
+            //       },
+            //       "mouseleave" : function(){
+            //             $(this).css({
+            //                   backgroundColor : "#fff"
+            //             })
+            //       },
+            // })
+
+            // 事件委托;
+
+            // $("ul").on("click","li",function(){
+            //       // console.log(this);
+            //       $li = $("<li>hello world</li>");
+
+            //       $("ul").append($li);
+            // })
+
+            // $("li").one("click",function(){
+            //       alert();
+            // })
+            
+      </script>
+</body>
+</html>

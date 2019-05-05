@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <style>
+            .M-box a,.M-box span{
+                  display: inline-block;
+                  width: 40px;
+                  height: 40px;
+                  line-height: 40px;
+                  text-align: center;
+                  background: antiquewhite;
+                  margin: 10px;
+                  text-decoration: none;
+                  color: #333;
+                  padding: 5px;
+            }
+            .M-box span.active{
+                  background: yellowgreen;
+            }
+      </style>
+</head>
+<body>
+
+      <div class="M-box"></div>
+      <script src="../libs/jquery-3.4.0.js"></script>
+      <script src="../libs/jquery/pagination/jquery.pagination.js"></script>
+      <script>
+            
+            // jQuery => 一个构造函数;
+
+            // 1. 实例;   => $().css();         局部方法;
+            // 2. 原型对象; $.post() $.get....  全局方法;
+
+            // 什么是jQuery =>  给jQuery 拓展了一部分功能的插件;
+
+            // $("body").yanghuaizhi();
+            // jQuery插件的作用就是给jQuery添加一个这样的方法;
+
+            // jQuery 无new实例;
+
+            // jQuery.prototype.yanghuaizhi = function(){
+            //       alert("hello i'm huaizhiY");
+            // }
+
+            // $("body").yanghuaizhi();
+            // // jQuery .fn 和 jQuery.prototype ；
+            // console.log(jQuery.fn === jQuery.prototype);
+
+            // 给实例对象添加局部方法的时候,我们使用如下的方式进行添加;
+            // jQuery.fn.yanghuaizhi = function(){
+
+            // }
+            // 局部方法;
+
+            // 全局方法;
+            // jQuery.yanghuaizhi = function(){
+            //       alert("hello world")
+            // }
+
+            // 第二种插件开发模式;
+
+            // extend 只传递一个参数的情况; 它会把这个对象参数合并到jQuery 对象之中;
+            
+            // $.extend({
+            //       yanghuaizhi : function(){
+            //             alert("hello world")
+            //       }
+            // });
+            // $.fn.extend({
+            //       yanghuaizhi : function(){
+            //             alert("hello world")
+            //       }
+            // });
+
+            
+            $('.M-box').pagination({
+                  callback(api){
+                        console.log(api.getCurrent());
+                  },
+                  homePage: '首页',
+                  endPage: '末页',
+                  prevContent: '上页',
+                  nextContent: '下页',
+                  totalData: 100,
+                  showData: 20,
+                  coping: true
+            })
+      </script>
+</body>
+</html>

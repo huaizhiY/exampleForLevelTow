@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.8.1/css/all.min.css">
+      <style>
+            *{
+                  margin: 0;
+                  padding: 0;
+            }
+            .big{
+                  font-size:80px;
+            }
+
+            .acitve-bath::after{
+                  content: "我要冲澡";
+                  display: block;
+                  width:80px;
+                  height:80px;
+                  position: relative;
+                  font-size: 20px;
+                  background: yellowgreen;
+                  border-radius: 50%;
+            }
+            li{
+                  list-style: none;
+            }
+            #stairs{
+                  width: 100px;
+                  height: 300px;
+                  border: 2px  solid #ddd;
+                  border-bottom: none;
+                  position: fixed;
+                  right: 5%;
+                  bottom: 2%;
+                  background: rgba(255,255,255,.6);
+            }
+            #stairs li{
+                  width: 100px;
+                  height: 50px;
+                  line-height: 50px;
+                  text-align: center;
+                  box-sizing: border-box;
+                  border-bottom: 2px solid #ddd;
+            }
+            #stairs li.active{
+                  background:rgba(0,0,0,.6);
+                  color: #fff;
+                  font-weight: bold;
+            }
+            div[class^=floor]{
+                  height: 600px;
+                  line-height: 600px;
+                  font-size: 200px;
+                  color: #fff;
+                  font-weight: 400; 
+                  text-align: center;
+            }
+      </style>
+</head>
+<body>
+
+      <!-- <span class="fa fa-bath big" aria-hidden="true">
+      </span> -->
+
+      <div class="floor1">1</div>
+      <div class="floor2">2</div>
+      <div class="floor3">3</div>
+      <div class="floor4">4</div>
+      <div class="floor5">5</div>
+      <div class="floor6">6</div>
+
+
+      <ul id="stairs">
+            <li>一楼</li>
+            <li>二楼</li>
+            <li>三楼</li>
+            <li>四楼</li>
+            <li>五楼</li>
+            <li>六楼</li>
+      </ul>
+
+
+      <script src="../libs/jquery-3.4.0.js"></script>
+      <script src="./scripts/stairs.js"></script>
+      <script>
+            
+            $("div[class^=floor]").css({
+                  backgroundColor : function(){
+                        return randomColor();
+                  }
+            })
+            function randomColor(){
+                  var r = Math.round(Math.random() * 255);
+                  var g = Math.round(Math.random() * 255);
+                  var b = Math.round(Math.random() * 255);
+                  return `rgb(${r},${g},${b})`
+            }
+
+            // 1. 所有的按钮;
+            
+            // 2. 所有的楼层; 不确定因素; => 变成值;
+
+            new Stairs("#stairs li",[0,600,1200,1800,2400,3000])
+
+      </script>
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>百度地图</title>
+
+      <style>
+            html{height:100%}    
+            body{height:100%;margin:0px;padding:0px}    
+            #container{height:100%}    
+            .options{
+                  position: absolute;
+                  top: 0;
+                  left:0;
+            }
+      </style>
+</head>
+<body>
+      <div id="container">
+
+      </div>
+
+      <div class="options">
+            <input type="text" id="lgd" placeholder="请输入经度" value="116.404">
+            <input type="text" id="lat" placeholder="请输入纬度" value="39.915">
+      </div>
+      <script src="http://api.map.baidu.com/api?v=2.0&ak=xtNYeNgchO2Oqa161kmxlQxq153RQv4C"></script>
+      <script src="../libs/jquery-3.4.0.js"></script>
+      <script>
+            // 百度 腾讯 高德;
+
+            // 实例地图; 将地图放进容器;
+            var map = new BMap.Map("container"); 
+            // // 创建坐标点;  经纬度 构造成适用于百度地图的数据对象;
+            // var point = new BMap.Point(116.404, 39.915); 
+            // // 设置地图的初始坐标;   
+            // map.centerAndZoom(point , 20);  
+            // // 开启滚轮缩放;
+            // map.enableScrollWheelZoom(true);
+
+            $("#lgd").on("input",changePosition);
+            $("#lat").on("input",changePosition);
+
+            function changePosition(){
+                  var lgd = $("#lgd").val();
+                  var lat = $("#lat").val();
+                  // 创建坐标点;  经纬度 构造成适用于百度地图的数据对象;
+                  var point = new BMap.Point(lgd, lat); 
+                  // 设置地图的初始坐标;   
+                  map.centerAndZoom(point , 20);  
+                  // 开启滚轮缩放;
+                  map.enableScrollWheelZoom(true);
+            }
+
+            map.addEventListener("click",getPoint);
+
+            function getPoint(e){
+                  // alert(e.point.lng + "," + e.point.lat);
+                  // var marker = new BMap.Marker(new BMap.Point(e.point.lng, e.point.lat));  // 创建标注
+                  // map.addOverlay(marker);               // 将标注添加到地图中
+                  // marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+                  var pt = new BMap.Point(e.point.lng, e.point.lat);
+                  var myIcon = new BMap.Icon("http://lbsyun.baidu.com/jsdemo/img/fox.gif", new BMap.Size(300,157));
+                  var marker2 = new BMap.Marker(pt,{icon:myIcon});  // 创建标注
+                  map.addOverlay(marker2); 
+
+                  // var walking = new BMap.WalkingRoute(map, {renderOptions:{map: map, autoViewport: true}});
+	            // walking.search("天安门", "北京科技职业学校");          
+            }
+
+            changePosition();
+
+
+            
+            map.addEventListener("click", function(e){        
+                  //终点的经纬度;
+                  var pt_end = e.point;
+                  //起点的经纬度
+                  var lgd = $("#lgd").val();
+                  var lat = $("#lat").val();
+                  // 创建坐标点;  经纬度 构造成适用于百度地图的数据对象;
+                  var pt_start = new BMap.Point(lgd, lat);
+                 
+                  var walking = new BMap.WalkingRoute(map, {renderOptions:{map: map, autoViewport: true}});
+                  walking.search(pt_start, pt_end);
+            });   
+
+            // 坐标 => 操作;
+
+            // 文字 转换坐标 => 操作
+
+            // 坐标转换成文字 => 操作;
+            
+      </script>
+</body>
+</html>

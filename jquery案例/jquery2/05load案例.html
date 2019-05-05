@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+</head>
+<body>
+
+      <div class="box">
+            
+      </div>
+      <script src="../libs/jquery-3.4.0.js"></script>
+      <script>
+            // 把数据加载回box之中;
+            // $(".box").load("./05load数据.html table")
+            // load是同步的还是异步的
+            // $(".box").load("./05load数据.html",function(){
+            //       $("button").click(function(){
+            //             alert("hanlder Click");
+            //       })
+            // })
+
+            // $(".box").load("./05load数据.html")
+            // $(".box").on("click","button",function(){
+            //       alert("hello world");
+            // })
+
+            // ajax 收发数据;
+
+            $(".box").load("./server/test.php",{ data : "hello"})
+
+            //  load 方法用来配合后端模板生成的内容 效果极佳;
+            
+      </script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+</head>
+<body>
+      <script>
+            // 当 JS 去访问一个对象的时候 , 如果发现对象之中没有想要的属性 那么他会查看该对象之中是否存在__proto__如果存在继续沿着__proto__向下找寻直到找到Object.prototype;
+
+            // 构造函数继承 => 更改父级的this指向变成子集的实例对象;
+            
+            // function Father(){
+            //       this.money = 999999;
+            //       this.eat = function(){
+            //             console.log("吃肉");
+            //       }
+            //       this.drink = function(){
+            //             console.log("喝酒");
+            //       }
+            // }
+            // // father => 有三个属性，这三个属性都是对this的加工; 
+            // function Son(){
+            //       // son{ parent : Father } // this => son{}
+            //       // 定义了属性;
+            //       this.parent = Father; //改变了Father构造函数的执行环境       为子类定义一个特殊属性，这个属性值  指向 父类    this.parent = function Father(){....}
+
+            //       // son{ parent : Father , money , eat, drink  }
+            //       this.parent();
+
+            //       // son{ money , eat, drink  } // this => son{}
+            //       delete this.parent;  //delete 删除实例属性
+            // }
+            // var son = new Son();
+            // console.log(son);
+
+            // var foo = function(){
+            //       console.log(this); 
+            // }
+
+            // var obj = {
+            //       a : foo
+            // }
+ 
+            // foo(); // this => window
+            // obj.a(); // this => obj;
+            // this指向指向的是函数的调用者 (context) 执行环境;
+
+
+            // var obj = {
+            //       a:{
+            //             b:{
+            //                   c:{
+            //                         name:1
+            //                   }
+            //             }
+            //       }
+            // }
+            // var clone = {};
+            // //for(var attr in obj){
+            // //表层深克隆
+            // //clone[attr] = obj[attr];
+            // //}
+            // //clone === obj值为false
+            // var objString = JSON.stringify(obj);
+            // clone = JSON.parse(objString);
+         
+            //为什么这里的clone === obj 还是false
+            
+            // 所有的构造函数都是函数;
+            // 函数的 __proto__ 
+            // 函数是 Function 构造出来的实例; (表现形态是函数不是传统对象);
+            // 字符串是 String 构造出来的实例;
+
+            // 实例对象 .__proto__;
+            // Function.__proto__;
+            // 任何函数的.__proto__ === Function.prototype
+
+            // function Foo(){};
+            // new Foo().__proto__ === Foo.prototype;
+            // __proto__ 原型指针(隐形原型)   prototype 原型(显性原型);
+            // new Foo().__proto__ === Foo.prototype;
+
+            // 存在的目的是什么 ?  JS可以访问到原型上的属性 , 方便进行公用程序的编程
+            // 是做什么的 ?       找到实例的原型用的;
+            // 怎么用 ?           Object.getPrototypeOf() 获取查看原型;
+            //                   Object.create()
+            
+            // function Foo(){
+
+            // }
+
+            // Foo.prototype.shuxing = function(){}
+
+            // console.log(new Foo());
+            //实例 = __proto__ > 原型 = constructor > 构造函数 = prototype > 原型 = constructor > 构造函数  = prototype > 原型 = constructor > 构造函数  
+
+      </script>   
+</body>
+</html>

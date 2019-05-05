@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <style>
+            #box,
+            #box2 {
+                  width: 100px;
+                  height: 100px;
+                  background: #000;
+                  margin: 10px;
+                  opacity: 1;
+                  position: absolute;
+            }
+
+            #box2 {
+                  background: yellowgreen;
+                  display: none;
+            }
+
+            #start_animate {
+                  position: absolute;
+                  z-index: 999;
+            }
+      </style>
+</head>
+
+<body>
+
+      <button id="start_animate">开始动画</button>
+      <div id="box"></div>
+      <div id="box2"></div>
+
+      <script src="../libs/jquery-3.4.0.js"></script>
+      <script>
+
+            // 1. 简单动画
+            // show hide fadeIn fadeOut slideDown slideUp
+            // 2. 自定义动画
+            // animate
+            // 3. 动画队列 
+            // queue
+            // 4. 终止动画 
+            // stop
+            // $("#start_animate").click(animte1)
+
+            // function animte1(){
+            //       // $("#box").hide(3000);
+            //       // $("#box2").show(3000);
+
+            //       // $("#box").toggle(3000);
+            //       // $("#box2").toggle(3000);
+
+            //       // $("#box").fadeOut(3000);
+            //       // $("#box2").fadeIn(3000);
+            //       // $("#box").fadeToggle(3000);
+            //       // $("#box2").fadeToggle(3000);
+
+            //       // $("#box").fadeTo(1000,0.3);
+
+            //       // $("#box").slideUp(3000);
+            //       // $("#box2").slideDown(3000);
+
+            //       // $("#box").slideToggle(3000 , arguments.callee);
+            //       // $("#box2").slideToggle(3000);
+            // }
+
+            // 异步一定有回调函数;
+            // 3000 
+            // "slow" 600 "fast" 200  "normal" 400
+
+            $("#start_animate").click(animate2)
+
+            // function animte2() {
+            //       //自定义动画;
+            //       $("#box").animate({
+            //             // width:"+=200px",
+            //             // height : "+=200",
+            //             left: "+=100"
+            //       }, 1000, function () {
+            //             $(this).animate({
+            //                   top: "+=100"
+            //             }, function () {
+            //                   $(this).animate({
+            //                         left : "-=100"
+            //                   })
+            //             })
+            //       })
+            // }
+
+            // jquery把动画队列放到了jqueryDOM上,意味着我们可以不用嵌套直接列队元素的动画;
+
+            function animate2(){    
+                  $("#box").css({
+                        backgroundColor : "yellowgreen"
+                  });
+                  $("#box")
+                  // [animate1,animate2]
+                  .animate({
+                        left : "+=100"
+                  })
+                  .animate({
+                        top : "+=100"
+                  })
+                   // 同步列队工具; 想要继续执行后方异步队列必须要调用next方法
+                  .queue(function(next){
+                        $(this).css({
+                              backgroundColor : "skyblue"
+                        })
+                        next();
+                  })
+                  .animate({
+                        left : "-=100"
+                  })
+                  .animate({
+                        top : "-=100"
+                  })
+                  // 同步列队工具;
+                  .queue(function(next){
+                        $(this).css({
+                              backgroundColor : "#ddd"
+                        })
+                        next();
+                  })
+            }     
+      </script>
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+/*css reset start*/
+html {color:#000;background:#FFF;}t5
+body,div,dl,dt,dd,ul,ol,li,
+h1,h2,h3,h4,h5,h6,
+pre,code,form,fieldset,legend,
+input,textarea,p,blockquote,th,td{margin:0;padding:0;}
+table {border-collapse:collapse;border-spacing:0;}
+fieldset,img {border:0;}
+address,caption,cite,code,dfn,em,strong,th,var {font-style:normal;font-weight:normal;}
+li {list-style:none;}
+caption,th {text-align:left;}
+h1,h2,h3,h4,h5,h6 {font-size:100%;font-weight:normal;}
+q:before,q:after {content:'';}
+abbr,acronym {border:0;font-variant:normal;}
+sup {vertical-align:text-top;}
+sub {vertical-align:text-bottom;}
+input,textarea,select {font-family:inherit;font-size:inherit;font-weight:inherit;}
+input,textarea,select {*font-size:100%;}
+legend {color:#000;}
+/*css reset end*/
+
+html{
+      background-color: #eee;
+}
+.my-container{
+      width: 1300px;
+      margin: 0 auto;
+}
+
+.my-container::after{
+      content: "";
+      display: block;
+      clear: both;
+}
+.goods-item{
+      width: 300px;
+      float: left;
+      margin: 10px;
+      background-color: #fff;
+      border-radius: 5px;
+}
+.goods-item .img-box{
+      width: 220px;
+      height: 220px;
+      margin: 40px;
+     
+}
+.goods-item .img-box img{
+      width: 100%;
+      height: 100%;
+}
+
+.title-box{
+      color: #686868;
+      font-size: 16px;
+      width: 248px;
+      height: 66px;
+      margin:  0 auto;
+}
+
+.detail-box{
+      width: 248px;
+      height: 66px;
+      margin: 10px auto 0 auto;
+      display: flex;
+      justify-content: space-between;
+}
+
+.price-box .new{
+      color: #111;
+      font-size: 22px;
+
+}
+
+.price-box .old{
+      color: #cbcbcb;
+      font-size: 18px;
+      padding-left: 10px;
+}
+
+.bought {
+      color:#9c9c9c;
+      font-size: 16px;
+      margin-top: 5px;
+}
+
+.pagination .btn{
+      margin: 5px;
+}

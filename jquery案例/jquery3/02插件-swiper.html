@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>swiper</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.css">
+
+      <style>
+            .my-banner{
+                  width: 800px;
+                  height: 400px;
+                  margin: 0 auto;
+            }
+            .swiper-slide{
+                  font-size: 100px;
+                  text-align: center;
+                  line-height: 400px;
+                  background: #ddd;
+            }
+            .swiper-pagination strong{
+                  width:100px;
+                  height: 20px;
+                  background: rgb(190, 103, 103);
+                  border-radius: 0;
+                  position: relative;
+            }
+            .swiper-pagination strong::after{
+                  content: "";
+                  display: block;
+                  width: 0%;
+                  height: 20px;
+                  background: #000;
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+            }
+            .swiper-pagination strong.swiper-pagination-bullet-active::after{
+                  transition: all 3s;
+                  width: 100%;
+            }
+      </style>
+</head>
+<body>
+
+      <div class="show"></div>
+
+      <div class="swiper-container my-banner" id="swiper">
+            <div class="swiper-wrapper">
+                  <div class="swiper-slide">1</div>
+                  <div class="swiper-slide">2</div>
+                  <div class="swiper-slide">3</div>
+                  <div class="swiper-slide">4</div>
+                  <div class="swiper-slide">5</div>
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-pagination"></div>
+      </div>
+
+     
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.js"></script>
+
+      <script>
+            // CDN 
+            // 因为主域名(核心服务器),都使用了https; 会导致请求非常的重;
+            // 提供核心业务及html基本代码; 
+            // 其余的内容例如图片等内容 ,都会放在专用的服务器上;
+
+            // CDN ;
+            // 浏览器有个特性 : 缓存;
+            // 共享;
+            // 盈利;
+
+            var swiper = new Swiper("#swiper",{
+                  navigation : {
+                        prevEl : ".swiper-button-prev",
+                        nextEl : ".swiper-button-next"
+                  },
+                  loop : true,
+                  autoplay:{
+                        delay : 3000,
+                        disableOnInteraction: true,   
+                  },
+                  pagination: {
+                        el: '.swiper-pagination',
+                        bulletElement : 'strong',
+                        dynamicMainBullets: 2,
+                        // hideOnClick :true,
+                        clickable :true,
+                        renderBullet: function (index, className) {
+                              return '<strong class="' + className + '">' + (index + 1) + '</strong>';
+                        }
+                  },
+            })
+            swiper.params.autoplay.reverseDirection = true;
+            // console.log(swiper);
+
+            // document.onclick = function(){
+            //       swiper.autoplay.pause();
+            // }
+
+      </script>
+</body>
+</html>

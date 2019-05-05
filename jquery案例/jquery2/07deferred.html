@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+</head>
+<body>
+
+      <script src="../libs/jquery-3.4.0.js"></script>
+      <script>
+            // jQuery 解决异步回调难题的 Deferred; 
+            // var def = $.Deferred();
+
+            // var pro = new Promise(function(){
+            // })
+            // console.log(def);
+            // 状态机 ; => 存储状态 ; 
+
+            // console.log(def.state());
+
+            // def.resolve();
+            // def.reject();
+
+            // console.log(def.state());
+
+            // var def = $.Deferred();
+
+            // 拥有 resolve() reject() 这两个方法的对象,这两个方法可以改变对象的状态;
+            
+            // 隐藏掉这两个方法 , 也就意味着这个对象的状态不能被随意改变了;
+            
+            // console.log(def);
+            // console.log(def.promise());  // promise方法是用来隐藏|删除掉对象上某些功能的方法; 为了deferred对象的公平性;
+
+             
+      
+            // function xhrGet(url){
+            //       var def = $.Deferred();
+            //       var xhr = new XMLHttpRequest();
+            //       xhr.open("GET",url);
+            //       xhr.send(null);
+            //       xhr.onload = function(){
+            //             if(xhr.status === 200){
+            //                   def.resolve(xhr.responseText);
+            //             }
+            //       }
+            //       return def.promise();
+            // }
+
+            // xhrGet("./server/json.php")
+            // .then(function(res){
+            //       console.log(res);
+            // })
+
+            // Promise.all();
+            // Promise.race();
+
+
+            // var def = $.Deferred();
+            
+            // setTimeout( a  => {
+            //       def.resolve("hello world i'm def");
+            // },3000)
+
+            // var def2 = $.Deferred();
+            // setTimeout( a  => {
+            //       def2.resolve("hello world i'm def2");
+            // },1000)
+            
+            // $.when( def, def2 )
+            // .then(function(){
+            //       console.log(arguments);
+            // })
+
+      </script>
+</body>
+</html>

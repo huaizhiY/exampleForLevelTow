@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+</head>
+<body>
+      这个文字是一个分割线 ------------------------------
+      <!-- <p> hello <p> world </p></p> -->
+
+      <button class="a" data-id="0">这是一个<span>按钮</span></button>
+      <button class="a" data-id="0">这是一个<span>按钮</span></button>
+      <button class="a" data-id="0">这是一个<span>按钮</span></button>
+      <button class="a" data-id="0">这是一个<span>按钮</span></button>
+      <button class="a" data-id="0">这是一个<span>按钮</span></button>
+      <button class="a" data-id="0">这是一个<span>按钮</span></button>
+      <script src="../libs/jquery-3.4.0.js"></script>
+      <script>
+            // 元素的 增删改查;
+            
+            // 1. 创建元素;
+            $box = $("<div>hello world</div>");
+            // console.log($box);
+
+            // 2. 插入元素;
+
+            // xxx方法  和 xxxTo 方法 就是把字句和被字句的区别：
+
+            // $("body").append($box);
+            // $box.appendTo($("body"));
+
+            // $("body").prepend($box);
+            // prependTo
+
+            // $("body").after($box);
+            // $("body").before($box);
+            // $box.insertAfter("body");
+            // $box.insertBefore("body");
+
+            // 值的获取及操作;
+            // var a = $box.wrap($("<p>hahahahahahah</p>")[0])
+
+            // $("body").append($box);
+            // console.log(a);
+
+            // $("p").wrap("<div></div>");
+            // $("p").detach();
+
+            // 区别;
+            // $btn = $("button");
+            // $btn.click(function(){
+            //       alert("清除缓存");
+            // })
+
+            // $btn.remove();
+            // $btn.detach();
+
+            // $btn.trigger("click")
+
+            // console.log($btn);
+            
+            // var btn = document.getElementsByTagName("button")[0];
+            // console.log(btn.cloneNode(true));
+
+
+            $("button").click(function(){
+                  alert("清除缓存");
+            })
+
+            var $cloneBtn = $("button").clone(true);
+            $("body").append($cloneBtn);
+
+            $(".a").attr("data-id",function(){
+                  console.log(arguments);
+                  // return "hello world";
+                  return arguments[1] + "-" + arguments[0];
+            });
+            // console.log($("button").attr("id"));
+
+
+
+      </script>   
+</body>
+</html>

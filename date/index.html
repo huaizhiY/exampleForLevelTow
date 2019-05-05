@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>插件练习</title>
+	<link rel="stylesheet" href="https://at.alicdn.com/t/font_234130_nem7eskcrkpdgqfr.css">
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			list-style: none;
+		}
+		#adkDate-box{
+			width: 320px;
+			margin: 0 auto;
+			padding: 35px 20px;
+			font-size: 13px;
+		}
+		.adkDate-hd{
+			display: flex;
+			justify-content: space-between;
+			padding: 0 15px;
+		}
+		.today{
+			flex: 1;
+			text-align: center;
+		}
+		.ul-box{
+			overflow: hidden;
+		}
+		.ul-box > li{
+			float: left;
+			width: 14.28%;
+			text-align: center;
+			padding: 5px 0;
+		}
+		.other-month{
+			color: #999999;
+		}
+		.current-month{
+			color: #333333;
+			position: relative;
+		}
+		.today-style{
+			border-radius: 50%;
+			background: #58d321;
+		}
+		.arrow{
+			cursor: pointer;
+		}
+		.dayStyle{
+			display: inline-block;
+			width: 35px;
+			height: 35px;
+			border-radius: 50%;
+			text-align: center;
+			line-height: 35px;
+			cursor: pointer;
+		}
+		.current-month > .dayStyle:hover{
+			background: #00BDFF;
+			color: #ffffff;
+		}
+		.today-flag{
+			background: #00C2B1;
+			color: #fff;
+		}
+		.boxshaw{
+			box-shadow: 2px 2px 15px 2px #e3e3e3;
+		}
+		.selected-style {
+			background: #00BDFF;
+			color: #ffffff;
+		}
+		#h3Ele{
+			text-align: center;
+			padding: 10px;
+		}
+		i.house-price{
+			font-style : normal;
+			font-size: 10px;
+			color: #b6b6b6;
+			position: absolute;
+			z-index: 1;
+			left: 0;
+			bottom: 0;
+		}
+	</style>
+</head>
+<body>
+	
+	<div id='adkDate-box' class="boxshaw">
+		
+	</div>
+	<div>
+		<h3 id='h3Ele'></h3>
+	</div>
+</body>
+<script src="date.js"></script>
+<script>
+	var myAdkDate = new AdkDate({
+		el: '#adkDate-box',
+		//date: '2018-9-20',
+		clickCb: function (y,m,d,price) {
+			document.querySelector('#h3Ele').innerHTML = '日期：'+y+'-'+m+'-'+d +( price ? price : " 暂无价格")
+		},
+		nextMonthCb: function (y,m,d) {
+			document.querySelector('#h3Ele').innerHTML = '日期：'+y+'-'+m+'-'+d	
+		},
+		nextYeayCb: function (y,m,d) {
+			document.querySelector('#h3Ele').innerHTML = '日期：'+y+'-'+m+'-'+d	
+		},
+		prevMonthCb: function (y,m,d) {
+			document.querySelector('#h3Ele').innerHTML = '日期：'+y+'-'+m+'-'+d	
+		},
+		prevYearCb: function (y,m,d) {
+			document.querySelector('#h3Ele').innerHTML = '日期：'+y+'-'+m+'-'+d	
+		},
+		priceList : [
+			{
+				date:"2019-02-11",
+				price : 198
+			},
+			{
+				date:"2019-02-12",
+				price : 193
+			}
+		]
+	});
+</script>
+</html>

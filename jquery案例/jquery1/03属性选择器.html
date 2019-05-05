@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <style>
+            div{
+                  width: 100px;
+                  height:100px;
+                  float: left;
+                  margin: 10px;
+                  background: #000;
+            }
+            div[id^=b2]{
+                  background: #F99;
+            }
+            div[id$=ox1]{
+                  background: #F12;
+            }
+            div[id*=ox]{
+                  background: yellowgreen;
+            }
+      
+      </style>
+</head>
+<body>
+      <div id="b2ox1" data-id="123"></div>
+      <div id="box2" data-id="123"></div>
+      <div id="box3" data-id="123"></div>
+      <div id="box1" data-id="1234"></div>
+      <div id="box5" data-id="123"></div>
+      <span id="bo6x">123</span>
+      <span id="box">123</span>
+      <span id="box">123</span>
+      <span id="box">123</span>
+
+      <script src="../libs/jquery-3.4.0.js"></script>
+      <script>
+            
+            // $("div[id]").css({
+            //       backgroundColor : "red"
+            // })
+
+            // $("div[id=box1][data-id=123]").css({
+            //       backgroundColor : "red"
+            // })
+
+            // 属性选择器可以配合c3 ;
+            
+            // 非 选择器;
+            // $("div[id!=box1]").css({
+            //       backgroundColor : "red"
+            // })
+      
+      </script>
+</body>
+</html>

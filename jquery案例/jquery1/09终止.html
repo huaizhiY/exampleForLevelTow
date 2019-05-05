@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <style>
+       #box,
+            #box2 {
+                  width: 100px;
+                  height: 100px;
+                  background: #000;
+                  margin: 10px;
+                  opacity: 1;
+                  position: absolute;
+                  top: 100px;
+            }
+
+            #box2 {
+                  background: yellowgreen;
+                  display: none;
+            }
+
+            #start_animate, #stop_animate {
+                  position: absolute;
+                  z-index: 999;
+
+            }
+            #stop_animate{
+                  left: 100px;
+            } 
+            
+            </style>
+</head>
+<body>
+      <button id="start_animate">开始动画</button>
+      <button id="stop_animate">停止动画</button>
+      <div id="box"></div>
+      <script src="../libs/jquery-3.4.0.js"></script>
+      <script>
+            $("#start_animate").click(function(){
+                  $("#box")
+                  .animate({
+                        left : "+=500"
+                  },1000)
+                  .animate({
+                        top : "+=300"
+                  })
+            })
+            $("#stop_animate").click(function(){
+                  $("#box").stop(true,true);
+                  // 1. 是否清空动画队列;
+                  // 2. 是否立即完成动画
+            })
+      </script>
+</body>
+</html>

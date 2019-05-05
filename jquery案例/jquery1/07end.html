@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <style>
+            #box{
+                  width: 100px;
+                  height: 100px;
+                  background: #ddd;
+            }
+            #box.active{
+                  background: orange;
+            }
+      </style>
+</head>
+<body>
+      <div id="box">
+            <div class="title">
+                  title
+                  <p>   
+                        p
+                        <span>选中</span>
+                  </p>
+            </div>
+      </div>
+      <script src="../libs/jquery-3.4.0.js"></script>
+      <script>
+            // end 
+
+            // jQuery的编程方式 一行式代码;
+            // DOM.功能1.功能2.功能3....
+            // // 连缀式编程;
+
+            // $("#box")
+            // // div class=title
+            // .children()
+            // // p
+            // .children()
+            // // span
+            // .children()
+            // .css({
+            //       color : "red"
+            // })
+            // .end()
+            // .css({
+            //       background : "#ddd"
+            // })
+            // 在选择过程之中往回回退一步。
+
+
+            // is 
+
+            // $("#box").click(function(){
+            //       // console.log($(this).is(".active"));
+            //       // if(!$(this).is(".active")){
+            //       //       $(this).addClass("active");
+            //       // }else{
+            //       //       $(this).removeClass("active");
+            //       // }
+                  
+            //       // is => 简化版  active;
+            //       // if(!$(this).hasClass("active")){
+            //       //       $(this).addClass("active");
+            //       // }else{
+            //       //       $(this).removeClass("active");
+            //       // }
+
+            //       $(this).toggleClass("active");
+            // })
+
+
+            // 
+            
+      </script>
+</body>
+</html>

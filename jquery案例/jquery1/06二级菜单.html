@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+</head>
+<body>
+      <ul>
+            <li>一级菜单</li>
+            <li>一级菜单
+                  <ul>
+                        <li>二级菜单</li>
+                        <li>二级菜单</li>
+                        <li>二级菜单</li>
+                        <li>二级菜单</li>
+                  </ul>
+            </li>
+            <li>一级菜单</li>
+            <li>一级菜单</li>
+            <li>一级菜单
+                  <ul>
+                        <li>二级菜单</li>
+                        <li>二级菜单</li>
+                        <li>二级菜单</li>
+                        <li>二级菜单</li>
+                  </ul>
+            </li>
+      </ul>
+      <script src="../libs/jquery-3.4.0.js"></script>
+      <script>
+            // $("ul>li>ul").css({
+            //       display:"none"
+            // })
+
+            $("ul>li>ul").hide();
+            // console.log($("ul>li").has("ul").length);
+            $("ul>li").has("ul").mouseenter(function(){
+                  $(this).children().show();
+            })
+            $("ul>li").has("ul").mouseleave(function(){
+                  $(this).children().hide();
+            })
+      </script>
+</body>
+</html>
