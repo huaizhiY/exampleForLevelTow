@@ -80,7 +80,13 @@
             // localStorage => 有同源策略; 只有当前域名下设置的 localstroage 才可以互相访问;
       </script>
 
-      <script src="../libs/jquery-3.4.0.js"></script>
+      <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
       <script src="./scripts/carts.js"></script>
+
+      <script type="module">
+            import {A} from "./test.js";
+
+            console.log(new A());
+      </script>
 </body>
 </html>
